@@ -7,14 +7,11 @@
   
   <groupId>no.agricolas.scrumnotes.domain</groupId>
   
-  <artifactId>parent</artifactId>
+  <artifactId>domain</artifactId>
   
   <version>0.1-SNAPSHOT</version>
   
-  <packaging>jar</packaging>
-  
-  <modules>
-    <module>entities</module>
-  </modules>
+  <packaging>pom</packaging>
+
   
 </project>

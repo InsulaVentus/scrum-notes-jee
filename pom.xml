@@ -6,10 +6,10 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>no.agricolas.scrumnotes</groupId>
-    
+
     <artifactId>scrumnotes</artifactId>
 
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <version>0.1-SNAPSHOT</version>
 
@@ -18,9 +18,5 @@
 		<module>input</module>
 		<module>output</module>
 	</modules>
-	
-    <dependencies>
-
-    </dependencies>
 
 </project>

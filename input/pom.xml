@@ -7,14 +7,11 @@
   
   <groupId>no.agricolas.scrumnotes.input</groupId>
   
-  <artifactId>parent</artifactId>
+  <artifactId>input</artifactId>
   
   <version>0.1-SNAPSHOT</version>
   
-  <packaging>jar</packaging>
-  
-  <modules>
-    <module>jira</module>
-  </modules>
+  <packaging>pom</packaging>
+
   
 </project>
