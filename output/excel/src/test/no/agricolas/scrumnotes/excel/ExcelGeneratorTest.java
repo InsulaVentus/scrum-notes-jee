@@ -1,4 +1,4 @@
-package no.agricolas.scrumnotes.excel.utils;
+package no.agricolas.scrumnotes.excel;
 
 import no.agricolas.scrumnotes.entities.SubtaskNote;
 import org.junit.Before;
@@ -15,12 +15,12 @@ import static org.hamcrest.Matchers.is;
 /**
  * @author Simen Søhol
  */
-public class SimpleExcelGeneratorTest {
-    private SimpleExcelGenerator simpleExcelGenerator;
+public class ExcelGeneratorTest {
+    private ExcelGenerator excelGenerator;
 
     @Before
     public void setUp() {
-        simpleExcelGenerator = new SimpleExcelGenerator();
+        excelGenerator = new ExcelGenerator();
     }
 
     @Test
@@ -28,12 +28,12 @@ public class SimpleExcelGeneratorTest {
         List<SubtaskNote> subtaskNoteList = new ArrayList<SubtaskNote>();
         SubtaskNote subtaskNote;
         for (int i = 1; i < 20;  i++) {
-            subtaskNote = new SubtaskNote("PKKU-" + i, "PK-" + i + "00", "Dette er subtask nummer " + i, i + ".5",
+            subtaskNote = new SubtaskNote("PKKU-" + i, "PK-" + i + "00", "This is subtaks " + i, i + ".5",
                     SubtaskType.UTVIKLING);
             subtaskNoteList.add(subtaskNote);
         }
 
-        boolean generatedExcelFile = simpleExcelGenerator.createNotesFromSubtask(subtaskNoteList);
+        boolean generatedExcelFile = excelGenerator.createNotesFromSubtask(subtaskNoteList);
 
         assertThat(generatedExcelFile, is(true));
     }
