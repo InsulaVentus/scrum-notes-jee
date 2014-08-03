@@ -20,7 +20,6 @@ import java.util.List;
  * @author Simen Søhol
  */
 public class SimpleExcelGenerator {
-    private static final String PATH = "/Excel/";
     private static final String FILENAME = "Note.xls";
     private static final String SHEETNAME = "Sheet 1";
     private static final String QA = "QA                                 ";
@@ -97,10 +96,6 @@ public class SimpleExcelGenerator {
     }
 
     private static WritableCellFormat setETCStyle() {
-        return defaultCellStyleWithThinBorder(14);
-    }
-
-    private static WritableCellFormat setQAStyle() {
         return defaultCellStyleWithThinBorder(14);
     }
 
