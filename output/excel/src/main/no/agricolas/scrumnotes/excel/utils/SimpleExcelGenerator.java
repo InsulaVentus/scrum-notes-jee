@@ -2,17 +2,15 @@ package no.agricolas.scrumnotes.excel.utils;
 
 import jxl.CellView;
 import jxl.Workbook;
-import jxl.format.*;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
 import jxl.write.*;
-import jxl.write.Number;
 import jxl.write.biff.RowsExceededException;
 import no.agricolas.scrumnotes.entities.SubtaskNote;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,7 +20,7 @@ import java.util.List;
 public class SimpleExcelGenerator {
     private static final String FILENAME = "Note.xls";
     private static final String SHEETNAME = "Sheet 1";
-    private static final String QA = "QA                                 ";
+    private static final String QA = StringUtils.rightPad("QA", 40, ' ');
     private static final int A4_HEIGHT = 18;
     private static final int INCREASE_COLUMN = 2;
     private static final int COLUMN_WIDTH = 100*100;
@@ -79,10 +77,6 @@ public class SimpleExcelGenerator {
         sheet.addCell(etc);
     }
 
-    /**
-     * Sets the head fontstyle
-     * @return fontstyle
-     */
     private static WritableCellFormat setHeaderstyle() {
         return defaultCellStyleWithThinBorder(18);
     }
@@ -108,7 +102,6 @@ public class SimpleExcelGenerator {
         } catch (WriteException e) {
             e.printStackTrace();
         }
-
         return format;
     }
 
@@ -119,13 +112,12 @@ public class SimpleExcelGenerator {
 
         try {
             sheet.setRowView(row, HEADER_HEIGHT);
-            sheet.setRowView(row+ 1, PARENT_HEIGHT);
+            sheet.setRowView(row + 1, PARENT_HEIGHT);
             sheet.setRowView(row + 2, NOTE_HEIGHT);
             sheet.setRowView(row + 3, ETC_HEIGHT);
 
         } catch (RowsExceededException e) {
             e.printStackTrace();
         }
-
     }
 }
