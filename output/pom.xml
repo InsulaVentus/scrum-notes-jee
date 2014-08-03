@@ -5,6 +5,12 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>no.agricolas.scrumnotes</groupId>
+        <artifactId>scrumnotes</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
     <groupId>no.agricolas.scrumnotes.output</groupId>
 
     <artifactId>output</artifactId>
