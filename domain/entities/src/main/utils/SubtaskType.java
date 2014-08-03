@@ -6,5 +6,5 @@ package utils;
 public enum SubtaskType {
     UTVIKLING,
     TEST,
-    ANNE;
+    ANNET;
 }

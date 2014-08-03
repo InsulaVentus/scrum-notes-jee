@@ -3,8 +3,10 @@ package no.agricolas.scrumnotes.excel.utils;
 import jxl.CellView;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
+import jxl.format.Colour;
 import jxl.write.*;
 import jxl.write.biff.RowsExceededException;
+import utils.SubtaskType;
 
 /**
  * This class styles the excelsheet that is generated
@@ -12,34 +14,47 @@ import jxl.write.biff.RowsExceededException;
  * @author Simen Søhol
  */
 public class ExcelStyler {
-    private static final int COLUMN_WIDTH = 100*100;
-    private static final int HEADER_HEIGHT = 40*20;
-    private static final int PARENT_HEIGHT = 20*20;
-    private static final int NOTE_HEIGHT = 90*20;
-    private static final int ETC_HEIGHT = 20*20;
-
+    private static final int COLUMN_WIDTH = 100 * 100;
+    private static final int HEADER_HEIGHT = 40 * 20;
+    private static final int PARENT_HEIGHT = 20 * 20;
+    private static final int NOTE_HEIGHT = 90 * 20;
+    private static final int ETC_HEIGHT = 20 * 20;
 
     /**
      * Sets the size on each note
      *
-     * @param sheet the sheet to edit
-     * @param row the row edit
+     * @param sheet  the sheet to edit
+     * @param row    the row edit
      * @param column the column to edit
      */
-    public void setNoteSize(WritableSheet sheet, int row, int column) {
+    public void setNoteSize(WritableSheet sheet, int row, int column) throws RowsExceededException {
         CellView columnWidth = new CellView();
         columnWidth.setSize(COLUMN_WIDTH);
         sheet.setColumnView(column, columnWidth);
 
-        try {
-            sheet.setRowView(row, HEADER_HEIGHT);
-            sheet.setRowView(row + 1, PARENT_HEIGHT);
-            sheet.setRowView(row + 2, NOTE_HEIGHT);
-            sheet.setRowView(row + 3, ETC_HEIGHT);
+        sheet.setRowView(row, HEADER_HEIGHT);
+        sheet.setRowView(row + 1, PARENT_HEIGHT);
+        sheet.setRowView(row + 2, NOTE_HEIGHT);
+        sheet.setRowView(row + 3, ETC_HEIGHT);
 
-        } catch (RowsExceededException e) {
-            e.printStackTrace();
+
+    }
+
+    public void setTaskTypeColor(SubtaskType subtaskType, Label header) throws WriteException {
+        if (subtaskType == SubtaskType.UTVIKLING) {
+            changeTypeColor(header, Colour.LIGHT_BLUE);
+        } else if (subtaskType == SubtaskType.TEST) {
+            changeTypeColor(header, Colour.LIGHT_GREEN);
+        } else {
+            changeTypeColor(header, Colour.LIGHT_ORANGE);
         }
+    }
+
+    private void changeTypeColor(Label label, Colour colour) throws WriteException {
+        WritableCellFormat format = (WritableCellFormat) label.getCellFormat();
+        format.setBackground(colour);
+
+        label.setCellFormat(format);
     }
 
     /**
@@ -47,26 +62,26 @@ public class ExcelStyler {
      *
      * @param labels the labels to style
      */
-    public void setCellstyle(Label... labels) {
+    public void setCellstyle(Label... labels) throws WriteException {
         labels[0].setCellFormat(setHeaderstyle());
         labels[1].setCellFormat(setParentStyle());
         labels[2].setCellFormat(setNoteStyle());
         labels[3].setCellFormat(setETCStyle());
     }
 
-    private WritableCellFormat setHeaderstyle() {
+    private WritableCellFormat setHeaderstyle() throws WriteException {
         return defaultCellStyleWithThinBorder(18);
     }
 
-    private WritableCellFormat setParentStyle() {
+    private WritableCellFormat setParentStyle() throws WriteException {
         return defaultCellStyleWithThinBorder(14);
     }
 
-    private WritableCellFormat setNoteStyle() {
+    private WritableCellFormat setNoteStyle() throws WriteException {
         return defaultCellStyleWithThinBorder(12);
     }
 
-    private WritableCellFormat setETCStyle() {
+    private WritableCellFormat setETCStyle() throws WriteException {
         return defaultCellStyleWithThinBorder(14);
     }
 
@@ -76,15 +91,11 @@ public class ExcelStyler {
      * @param textSize the textsize to use
      * @return the cellstyle
      */
-    private WritableCellFormat defaultCellStyleWithThinBorder(int textSize)  {
+    private WritableCellFormat defaultCellStyleWithThinBorder(int textSize) throws WriteException {
         WritableCellFormat format = new WritableCellFormat();
+        format.setBorder(Border.ALL, BorderLineStyle.MEDIUM);
+        format.setFont(new WritableFont(WritableFont.ARIAL, textSize));
 
-        try {
-            format.setBorder(Border.ALL, BorderLineStyle.MEDIUM);
-            format.setFont(new WritableFont(WritableFont.ARIAL, textSize));
-        } catch (WriteException e) {
-            e.printStackTrace();
-        }
         return format;
     }
 }

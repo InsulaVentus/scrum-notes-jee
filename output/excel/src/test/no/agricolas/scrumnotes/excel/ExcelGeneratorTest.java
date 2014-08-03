@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import utils.SubtaskType;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,15 +25,29 @@ public class ExcelGeneratorTest {
     @Test
     public void generateSingleNoteFromList() {
         List<SubtaskNote> subtaskNoteList = new ArrayList<SubtaskNote>();
-        SubtaskNote subtaskNote;
-        for (int i = 1; i < 20;  i++) {
-            subtaskNote = new SubtaskNote("PKKU-" + i, "PK-" + i + "00", "This is subtaks " + i, i + ".5",
-                    SubtaskType.UTVIKLING);
-            subtaskNoteList.add(subtaskNote);
+
+        for (int i = 1; i < 10; i++) {
+            SubtaskNote subtaskNoteUtvikling = buildSubtask(i, SubtaskType.UTVIKLING);
+            SubtaskNote subtaskNoteTest = buildSubtask(i * 10, SubtaskType.TEST);
+            SubtaskNote subtaskNoteAnnet = buildSubtask(i * 20, SubtaskType.ANNET);
+            subtaskNoteList.add(subtaskNoteUtvikling);
+            subtaskNoteList.add(subtaskNoteTest);
+            subtaskNoteList.add(subtaskNoteAnnet);
         }
 
         boolean generatedExcelFile = excelGenerator.createNotesFromSubtask(subtaskNoteList);
 
         assertThat(generatedExcelFile, is(true));
+    }
+
+    private SubtaskNote buildSubtask(int i, SubtaskType subtaskType) {
+        SubtaskNote subtaskNote = new SubtaskNote();
+        subtaskNote.setHeader("PKKU-" + i);
+        subtaskNote.setParentTask("PK-" + i + "00");
+        subtaskNote.setNote("This is subtaks " + i);
+        subtaskNote.setEtc(i + ".5");
+        subtaskNote.setSubtaskType(subtaskType);
+
+        return subtaskNote;
     }
 }

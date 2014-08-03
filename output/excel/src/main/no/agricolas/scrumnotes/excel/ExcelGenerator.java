@@ -1,7 +1,10 @@
 package no.agricolas.scrumnotes.excel;
 
 import jxl.Workbook;
-import jxl.write.*;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 import no.agricolas.scrumnotes.entities.SubtaskNote;
 import no.agricolas.scrumnotes.excel.utils.ExcelStyler;
@@ -13,6 +16,7 @@ import java.util.List;
 
 /**
  * This class will generate a simple excelfile to a given location
+ *
  * @author Simen Søhol
  */
 public class ExcelGenerator {
@@ -58,7 +62,7 @@ public class ExcelGenerator {
             generateNote(sheet, subtask, row, column);
 
             row += HEIGHT_OF_NOTE;
-            if (row  == A4_HEIGHT) {
+            if (row == A4_HEIGHT) {
                 row = 0;
                 column += INCREASE_COLUMN;
             }
@@ -72,6 +76,7 @@ public class ExcelGenerator {
         Label etc = new Label(column, row + 3, QA + subtask.getEtc());
 
         excelStyler.setCellstyle(head, parent, note, etc);
+        excelStyler.setTaskTypeColor(subtask.getSubtaskType(), head);
 
         sheet.addCell(head);
         sheet.addCell(parent);
