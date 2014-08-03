@@ -3,6 +3,7 @@ package no.agricolas.scrumnotes.excel.utils;
 import no.agricolas.scrumnotes.entities.SubtaskNote;
 import org.junit.Before;
 import org.junit.Test;
+import utils.SubtaskType;
 
 
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class SimpleExcelGeneratorTest {
         List<SubtaskNote> subtaskNoteList = new ArrayList<SubtaskNote>();
         SubtaskNote subtaskNote;
         for (int i = 1; i < 20;  i++) {
-            subtaskNote = new SubtaskNote("PKKU-" + i, "PK-" + i + "00", "Dette er subtask nummer " + i, i + ".5");
+            subtaskNote = new SubtaskNote("PKKU-" + i, "PK-" + i + "00", "Dette er subtask nummer " + i, i + ".5",
+                    SubtaskType.UTVIKLING);
             subtaskNoteList.add(subtaskNote);
         }
 

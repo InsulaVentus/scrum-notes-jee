@@ -1,5 +1,7 @@
 package no.agricolas.scrumnotes.entities;
 
+import utils.SubtaskType;
+
 /**
  * @author Simen Søhol
  */
@@ -8,12 +10,14 @@ public class SubtaskNote {
     private String parentTask;
     private String note;
     private String etc;
+    private SubtaskType subtaskType;
 
-    public SubtaskNote(String header, String parentTask, String note, String etc) {
+    public SubtaskNote(String header, String parentTask, String note, String etc, SubtaskType subtaskType) {
         setHeader(header);
         setParentTask(parentTask);
         setNote(note);
         setEtc(etc);
+        setSubtaskType(subtaskType);
     }
 
     public String getHeader() {
@@ -46,5 +50,13 @@ public class SubtaskNote {
 
     public void setEtc(String etc) {
         this.etc = etc;
+    }
+
+    public SubtaskType getSubtaskType() {
+        return subtaskType;
+    }
+
+    public void setSubtaskType(SubtaskType subtaskType) {
+        this.subtaskType = subtaskType;
     }
 }
