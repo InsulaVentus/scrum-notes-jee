@@ -1,6 +1,6 @@
 package no.agricolas.scrumnotes.common;
 
-import no.agricolas.scrumnotes.entities.SubtaskNote;
+import no.agricolas.scrumnotes.domain.SubtaskNote;
 
 import java.util.List;
 
