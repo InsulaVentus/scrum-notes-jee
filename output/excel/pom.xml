@@ -9,8 +9,8 @@
     <artifactId>excel</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Excel</name>
-    <description>Root pom for Excel</description>
+    <name>output-excel</name>
+    <description>Root pom for output-excel</description>
 
     <parent>
         <groupId>no.agricolas.scrumnotes.output</groupId>

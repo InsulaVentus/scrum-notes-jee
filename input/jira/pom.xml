@@ -9,8 +9,8 @@
     <artifactId>jira</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Jira</name>
-    <description>Root pom for Jira</description>
+    <name>input-jira</name>
+    <description>Root pom for input-ira</description>
 
     <parent>
         <groupId>no.agricolas.scrumnotes.input</groupId>

@@ -4,7 +4,6 @@ import no.agricolas.scrumnotes.domain.SubtaskNote;
 import no.agricolas.scrumnotes.jira.JiraFetchService;
 import no.agricolas.scrumnotes.jira.SimpleJiraFetchService;
 
-
 import java.util.List;
 
 /**
