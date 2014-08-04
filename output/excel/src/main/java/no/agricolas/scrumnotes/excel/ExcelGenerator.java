@@ -6,7 +6,7 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
-import no.agricolas.scrumnotes.entities.SubtaskNote;
+import no.agricolas.scrumnotes.domain.SubtaskNote;
 import no.agricolas.scrumnotes.excel.utils.ExcelStyler;
 import org.apache.commons.lang3.StringUtils;
 

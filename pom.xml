@@ -13,7 +13,7 @@
     <description>Root pom for Scrumnotes</description>
 
     <modules>
-        <module>domain</module>
+        <module>common</module>
         <module>input</module>
         <module>output</module>
     </modules>

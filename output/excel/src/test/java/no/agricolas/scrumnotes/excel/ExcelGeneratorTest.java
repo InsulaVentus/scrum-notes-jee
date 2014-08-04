@@ -1,7 +1,8 @@
 package no.agricolas.scrumnotes.excel;
 
-import no.agricolas.scrumnotes.entities.SubtaskNote;
-import no.agricolas.scrumnotes.entities.utils.SubtaskType;
+
+import no.agricolas.scrumnotes.domain.SubtaskNote;
+import no.agricolas.scrumnotes.domain.SubtaskType;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package no.agricolas.scrumnotes.entities.utils;
+package no.agricolas.scrumnotes.domain;
 
 /**
  * @author Simen Søhol

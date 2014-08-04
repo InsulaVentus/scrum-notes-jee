@@ -1,6 +1,4 @@
-package no.agricolas.scrumnotes.entities;
-
-import no.agricolas.scrumnotes.entities.utils.SubtaskType;
+package no.agricolas.scrumnotes.domain;
 
 /**
  * @author Simen Søhol

@@ -5,12 +5,12 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>no.agricolas.scrumnotes.domain</groupId>
-    <artifactId>domain</artifactId>
+    <groupId>no.agricolas.scrumnotes.common</groupId>
+    <artifactId>common</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>Domain</name>
-    <description>Root pom for Domain</description>
+    <packaging>jar</packaging>
+    <name>Common</name>
+    <description>Root pom for Common</description>
 
     <parent>
         <groupId>no.agricolas.scrumnotes</groupId>
