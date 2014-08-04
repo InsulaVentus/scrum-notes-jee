@@ -19,7 +19,8 @@
     </parent>
 
    <modules>
-       <module>excel</module>
+       <module>output-common</module>
+       <module>output-excel</module>
    </modules>
 
 </project>

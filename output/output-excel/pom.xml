@@ -6,9 +6,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>no.agricolas.scrumnotes.output.excel</groupId>
-    <artifactId>excel</artifactId>
+    <artifactId>output-excel</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <name>output-excel</name>
     <description>Root pom for output-excel</description>
 
@@ -26,8 +26,8 @@
         </dependency>
 
         <dependency>
-            <groupId>no.agricolas.scrumnotes.common</groupId>
-            <artifactId>common</artifactId>
+            <groupId>no.agricolas.scrumnotes.common.domain</groupId>
+            <artifactId>common-domain</artifactId>
             <version>0.1-SNAPSHOT</version>
         </dependency>
 
