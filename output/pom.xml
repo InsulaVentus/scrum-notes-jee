@@ -5,19 +5,18 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>no.agricolas.scrumnotes.output</groupId>
+    <artifactId>output</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Output</name>
+    <description>Root pom for Output</description>
+
     <parent>
         <groupId>no.agricolas.scrumnotes</groupId>
         <artifactId>scrumnotes</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
-
-    <groupId>no.agricolas.scrumnotes.output</groupId>
-
-    <artifactId>output</artifactId>
-
-    <version>0.1-SNAPSHOT</version>
-
-    <packaging>pom</packaging>
 
     <dependencies>
         <dependency>
