@@ -19,8 +19,8 @@
     </parent>
 
     <modules>
-        <module>jira</module>
-        <module>common</module>
+        <module>input-jira</module>
+        <module>input-common</module>
     </modules>
 
     <dependencies>

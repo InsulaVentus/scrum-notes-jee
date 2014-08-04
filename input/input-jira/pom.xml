@@ -5,12 +5,12 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>no.agricolas.scrumnotes.input.common</groupId>
-    <artifactId>common</artifactId>
+    <groupId>no.agricolas.scrumnotes.input.jira</groupId>
+    <artifactId>input-jira</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>input-common</name>
-    <description>Root pom for input-common</description>
+    <name>input-jira</name>
+    <description>Root pom for input-ira</description>
 
     <parent>
         <groupId>no.agricolas.scrumnotes.input</groupId>
