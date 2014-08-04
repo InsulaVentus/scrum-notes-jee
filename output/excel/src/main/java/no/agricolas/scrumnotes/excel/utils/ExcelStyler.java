@@ -41,13 +41,7 @@ public class ExcelStyler {
     }
 
     public void setTaskTypeColor(SubtaskType subtaskType, Label header) throws WriteException {
-        if (subtaskType == SubtaskType.UTVIKLING) {
-            changeTypeColor(header, Colour.LIGHT_BLUE);
-        } else if (subtaskType == SubtaskType.TEST) {
-            changeTypeColor(header, Colour.LIGHT_GREEN);
-        } else {
-            changeTypeColor(header, Colour.LIGHT_ORANGE);
-        }
+        changeTypeColor(header, subtaskType.getColour());
     }
 
     private void changeTypeColor(Label label, Colour colour) throws WriteException {
