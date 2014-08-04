@@ -18,4 +18,17 @@
         <version>0.1-SNAPSHOT</version>
     </parent>
 
+    <modules>
+        <module>jira</module>
+        <module>common</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>no.agricolas.scrumnotes.common</groupId>
+            <artifactId>common</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 </project>
