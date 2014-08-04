@@ -1,6 +1,6 @@
 package no.agricolas.scrumnotes.entities;
 
-import utils.SubtaskType;
+import no.agricolas.scrumnotes.entities.utils.SubtaskType;
 
 /**
  * @author Simen Søhol

@@ -1,9 +1,9 @@
 package no.agricolas.scrumnotes.excel;
 
 import no.agricolas.scrumnotes.entities.SubtaskNote;
+import no.agricolas.scrumnotes.entities.utils.SubtaskType;
 import org.junit.Before;
 import org.junit.Test;
-import utils.SubtaskType;
 
 import java.util.ArrayList;
 import java.util.List;
