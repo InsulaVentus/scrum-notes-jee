@@ -42,7 +42,7 @@ public class ExcelGeneratorTest {
     }
 
     private SubtaskNote buildSubtask(int i, SubtaskType subtaskType) {
-        SubtaskNote subtaskNote = new SubtaskNote("PKKU-" + i, "PK-" + i + "00",
+        SubtaskNote subtaskNote = new SubtaskNote("PKKU-" + i, "PKKU-" + i + "00",
                 "PK-1234" + i + ": This is a subtak number" + i, i + ".5",
                 subtaskType);
 
