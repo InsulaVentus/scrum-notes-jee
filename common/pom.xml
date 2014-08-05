@@ -9,7 +9,7 @@
     <artifactId>common</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Common</name>
+    <name>COMMON</name>
     <description>Root pom for Common</description>
 
     <parent>

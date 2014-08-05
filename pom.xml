@@ -9,7 +9,7 @@
     <artifactId>scrumnotes</artifactId>
     <packaging>pom</packaging>
     <version>0.1-SNAPSHOT</version>
-    <name>Scrumnotes</name>
+    <name>SCRUMNOTES</name>
     <description>Root pom for Scrumnotes</description>
 
     <modules>

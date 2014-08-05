@@ -9,7 +9,7 @@
     <artifactId>input</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Input</name>
+    <name>INPUT</name>
     <description>Root pom for Input</description>
 
     <parent>
