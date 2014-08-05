@@ -28,9 +28,9 @@ public class ExcelGeneratorTest {
         List<SubtaskNote> subtaskNoteList = new ArrayList<SubtaskNote>();
 
         for (int i = 1; i < 10; i++) {
-            SubtaskNote subtaskNoteUtvikling = buildSubtask(i, SubtaskType.UTVIKLING);
-            SubtaskNote subtaskNoteTest = buildSubtask(i * 10, SubtaskType.TEST);
-            SubtaskNote subtaskNoteAnnet = buildSubtask(i * 20, SubtaskType.ANNET);
+            SubtaskNote subtaskNoteUtvikling = buildSubtask(i, SubtaskType.DEVELOPMENT);
+            SubtaskNote subtaskNoteTest = buildSubtask(i * 10, SubtaskType.TESTING);
+            SubtaskNote subtaskNoteAnnet = buildSubtask(i * 20, SubtaskType.OTHER);
             subtaskNoteList.add(subtaskNoteUtvikling);
             subtaskNoteList.add(subtaskNoteTest);
             subtaskNoteList.add(subtaskNoteAnnet);
@@ -42,12 +42,9 @@ public class ExcelGeneratorTest {
     }
 
     private SubtaskNote buildSubtask(int i, SubtaskType subtaskType) {
-        SubtaskNote subtaskNote = new SubtaskNote();
-        subtaskNote.setHeader("PKKU-" + i);
-        subtaskNote.setParentTask("PK-" + i + "00");
-        subtaskNote.setNote("This is subtaks " + i);
-        subtaskNote.setEtc(i + ".5");
-        subtaskNote.setSubtaskType(subtaskType);
+        SubtaskNote subtaskNote = new SubtaskNote("PKKU-" + i, "PK-" + i + "00",
+                "PK-1234" + i + ": This is a subtak number" + i, i + ".5",
+                subtaskType);
 
         return subtaskNote;
     }

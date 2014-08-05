@@ -1,12 +1,15 @@
 package no.agricolas.scrumnotes.excel.utils;
 
 import jxl.CellView;
+import jxl.format.Alignment;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
 import jxl.format.Colour;
 import jxl.write.*;
 import jxl.write.biff.RowsExceededException;
-import no.agricolas.scrumnotes.domain.SubtaskType;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -15,7 +18,7 @@ import no.agricolas.scrumnotes.domain.SubtaskType;
  * @author Simen Søhol
  */
 public class ExcelStyler {
-    private static final int COLUMN_WIDTH = 100 * 100;
+    private static final int COLUMN_WIDTH = 90 * 90;
     private static final int HEADER_HEIGHT = 40 * 20;
     private static final int PARENT_HEIGHT = 20 * 20;
     private static final int NOTE_HEIGHT = 90 * 20;
@@ -37,19 +40,44 @@ public class ExcelStyler {
         sheet.setRowView(row + 1, PARENT_HEIGHT);
         sheet.setRowView(row + 2, NOTE_HEIGHT);
         sheet.setRowView(row + 3, ETC_HEIGHT);
-
-
     }
 
-    public void setTaskTypeColor(SubtaskType subtaskType, Label header) throws WriteException {
-        changeTypeColor(header, subtaskType.getColour());
+    /**
+     * Sets a given color on a given lable
+     *
+     * @param subtaskColor the color to set
+     * @param label        the label to set the color on
+     * @throws WriteException
+     */
+    public void setSubtaskColor(Colour subtaskColor, Label label) throws WriteException {
+        changeTypeColor(label, subtaskColor);
     }
 
-    private void changeTypeColor(Label label, Colour colour) throws WriteException {
+    /**
+     * Sets a background color on the writableCellformat to the given label.
+     *
+     * @param label the label to set the color on
+     * @param color the color to set
+     * @throws WriteException
+     */
+    private void changeTypeColor(Label label, Colour color) throws WriteException {
         WritableCellFormat format = (WritableCellFormat) label.getCellFormat();
-        format.setBackground(colour);
+        format.setBackground(color);
 
         label.setCellFormat(format);
+    }
+
+    /**
+     * Returns a random color from the the list
+     *
+     * @return random backgroundcolor
+     */
+    public Colour getRandomParentColor() {
+        List<Colour> colorList = Arrays.asList(Colour.getAllColours());
+
+        int randomColor = (int) (Math.random() * colorList.size()) + 1;
+
+        return colorList.get(randomColor);
     }
 
     /**
@@ -58,26 +86,10 @@ public class ExcelStyler {
      * @param labels the labels to style
      */
     public void setCellstyle(Label... labels) throws WriteException {
-        labels[0].setCellFormat(setHeaderstyle());
-        labels[1].setCellFormat(setParentStyle());
-        labels[2].setCellFormat(setNoteStyle());
-        labels[3].setCellFormat(setETCStyle());
-    }
-
-    private WritableCellFormat setHeaderstyle() throws WriteException {
-        return defaultCellStyleWithThinBorder(18);
-    }
-
-    private WritableCellFormat setParentStyle() throws WriteException {
-        return defaultCellStyleWithThinBorder(14);
-    }
-
-    private WritableCellFormat setNoteStyle() throws WriteException {
-        return defaultCellStyleWithThinBorder(12);
-    }
-
-    private WritableCellFormat setETCStyle() throws WriteException {
-        return defaultCellStyleWithThinBorder(14);
+        labels[0].setCellFormat(defaultCellStyleWithBorder(25));
+        labels[1].setCellFormat(defaultCellStyleWithBorder(15));
+        labels[2].setCellFormat(defaultCellStyleWithBorder(14));
+        labels[3].setCellFormat(defaultCellStyleWithBorder(14));
     }
 
     /**
@@ -86,10 +98,12 @@ public class ExcelStyler {
      * @param textSize the textsize to use
      * @return the cellstyle
      */
-    private WritableCellFormat defaultCellStyleWithThinBorder(int textSize) throws WriteException {
+    private WritableCellFormat defaultCellStyleWithBorder(int textSize) throws WriteException {
         WritableCellFormat format = new WritableCellFormat();
-        format.setBorder(Border.ALL, BorderLineStyle.MEDIUM);
+        format.setBorder(Border.ALL, BorderLineStyle.THICK);
         format.setFont(new WritableFont(WritableFont.ARIAL, textSize));
+        format.setWrap(true);
+        format.setAlignment(Alignment.CENTRE);
 
         return format;
     }

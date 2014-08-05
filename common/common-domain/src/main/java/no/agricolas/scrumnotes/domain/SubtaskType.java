@@ -6,14 +6,17 @@ import jxl.format.Colour;
  * @author Simen Søhol
  */
 public enum SubtaskType {
-    UTVIKLING(Colour.LIGHT_BLUE),
-    TEST(Colour.LIGHT_GREEN),
-    ANNET(Colour.LIGHT_ORANGE);
+    DEVELOPMENT(Colour.LIGHT_TURQUOISE, "Utvikling "),
+    TESTING(Colour.LIGHT_GREEN, "Test "),
+    OTHER(Colour.LIGHT_ORANGE, "Annet ");
 
     private Colour colour;
 
-    private SubtaskType(Colour colour) {
+    private String label;
+
+    private SubtaskType(Colour colour, String label) {
         setColour(colour);
+        setLabel(label);
     }
 
     private void setColour(Colour colour) {
@@ -22,5 +25,13 @@ public enum SubtaskType {
 
     public Colour getColour() {
         return this.colour;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 }

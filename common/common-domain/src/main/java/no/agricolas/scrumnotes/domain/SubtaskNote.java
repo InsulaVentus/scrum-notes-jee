@@ -10,14 +10,6 @@ public class SubtaskNote {
     private String etc;
     private SubtaskType subtaskType;
 
-    public SubtaskNote() {
-        setHeader("");
-        setParentTask("");
-        setNote("");
-        setEtc("");
-        setSubtaskType(SubtaskType.UTVIKLING);
-    }
-
     public SubtaskNote(String header, String parentTask, String note, String etc, SubtaskType subtaskType) {
         setHeader(header);
         setParentTask(parentTask);

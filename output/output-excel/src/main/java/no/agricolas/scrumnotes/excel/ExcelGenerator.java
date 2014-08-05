@@ -1,6 +1,7 @@
 package no.agricolas.scrumnotes.excel;
 
 import jxl.Workbook;
+import jxl.format.Colour;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
@@ -22,7 +23,7 @@ import java.util.List;
 public class ExcelGenerator {
     private static final String FILENAME = "Note.xls";
     private static final String SHEETNAME = "Sheet 1";
-    private static final String QA = StringUtils.rightPad("QA", 40, ' ');
+    private static final String QA = StringUtils.rightPad("QA", 35, ' ');
     private static final int A4_HEIGHT = 18;
     private static final int INCREASE_COLUMN = 2;
     private static final int HEIGHT_OF_NOTE = 6;
@@ -56,10 +57,11 @@ public class ExcelGenerator {
         int column = 0;
         int row = 0;
 
+        Colour parentColor = excelStyler.getRandomParentColor();
         for (SubtaskNote subtask : subtaskList) {
             excelStyler.setNoteSize(sheet, row, column);
 
-            generateNote(sheet, subtask, row, column);
+            generateNote(sheet, subtask, row, column, parentColor);
 
             row += HEIGHT_OF_NOTE;
             if (row == A4_HEIGHT) {
@@ -69,16 +71,17 @@ public class ExcelGenerator {
         }
     }
 
-    private void generateNote(WritableSheet sheet, SubtaskNote subtask, int row, int column) throws WriteException {
-        Label head = new Label(column, row, subtask.getHeader());
-        Label parent = new Label(column, row + 1, subtask.getParentTask());
+    private void generateNote(WritableSheet sheet, SubtaskNote subtask, int row, int column, Colour parentColor) throws WriteException {
+        Label header = new Label(column, row, subtask.getHeader());
+        Label parent = new Label(column, row + 1, subtask.getSubtaskType().getLabel() + subtask.getParentTask());
         Label note = new Label(column, row + 2, subtask.getNote());
         Label etc = new Label(column, row + 3, QA + subtask.getEtc());
 
-        excelStyler.setCellstyle(head, parent, note, etc);
-        excelStyler.setTaskTypeColor(subtask.getSubtaskType(), head);
+        excelStyler.setCellstyle(header, parent, note, etc);
+        excelStyler.setSubtaskColor(subtask.getSubtaskType().getColour(), parent);
+        excelStyler.setSubtaskColor(parentColor, header);
 
-        sheet.addCell(head);
+        sheet.addCell(header);
         sheet.addCell(parent);
         sheet.addCell(note);
         sheet.addCell(etc);
