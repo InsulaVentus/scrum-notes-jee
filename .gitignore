@@ -1,7 +1,6 @@
 # Folders #
 .idea/*
 out/*
-*/target/*
 
 # Files #
 *.class
