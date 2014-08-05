@@ -8,6 +8,7 @@ import jxl.write.*;
 import jxl.write.biff.RowsExceededException;
 import no.agricolas.scrumnotes.domain.SubtaskType;
 
+
 /**
  * This class styles the excelsheet that is generated
  *
