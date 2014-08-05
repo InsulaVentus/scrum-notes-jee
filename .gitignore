@@ -3,10 +3,10 @@
 out/*
 */target/*
 output/output-excel/target/*
+common/common-domain/target/*
 
 # Files #
 *.class
 *.iml
 *.xls
-*.jar
 
