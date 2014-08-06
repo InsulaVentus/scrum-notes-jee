@@ -17,6 +17,6 @@ public interface SimpleFetchService {
      * @param url the url of the jira parent task
      * @return the retrieved subtasks as a List of {@link SubtaskNote}'s
      */
-    public List<SubtaskNote> fetchFromJira(String url);
+    public List<SubtaskNote> fetchSubIssuesFromJira(String url);
 
 }
