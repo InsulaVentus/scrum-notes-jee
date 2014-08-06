@@ -1,7 +1,6 @@
 # Folders #
 .idea/*
 out/*
-*/target/*
 output/output-excel/target/*
 common/common-domain/target/*
 
