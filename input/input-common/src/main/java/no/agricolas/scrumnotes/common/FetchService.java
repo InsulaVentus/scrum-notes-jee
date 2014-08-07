@@ -1,8 +1,8 @@
 package no.agricolas.scrumnotes.common;
 
 import no.agricolas.scrumnotes.domain.SubtaskNote;
-import no.agricolas.scrumnotes.jira.service.DefaultJiraService;
 import no.agricolas.scrumnotes.jira.service.SimpleJiraService;
+import no.agricolas.scrumnotes.jira.service.JiraService;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class FetchService implements SimpleFetchService {
 
-    private SimpleJiraService jiraService = new DefaultJiraService();
+    private JiraService jiraService = new SimpleJiraService();
 
     /**
      * {@inheritDoc}

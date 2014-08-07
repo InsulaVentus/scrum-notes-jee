@@ -1,0 +1,278 @@
+{
+  "expand": "names,schema",
+  "startAt": 0,
+  "maxResults": 1,
+  "total": 7415,
+  "issues": [
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "272441",
+      "self": "https://jira.atlassian.com/rest/api/2/issue/272441",
+      "key": "XWORK-97",
+      "fields": {
+        "progress": {
+          "progress": 0,
+          "total": 0
+        },
+        "summary": "Subtask",
+        "issuetype": {
+          "self": "https://jira.atlassian.com/rest/api/2/issuetype/6",
+          "id": "6",
+          "description": "The sub-task of the issue",
+          "iconUrl": "https://jira.atlassian.com/images/icons/issuetypes/subtask_alternate.png",
+          "name": "Sub-task",
+          "subtask": true
+        },
+        "customfield_14733": "0|10z3l4:",
+        "customfield_14734": "0|10vxmg:",
+        "timespent": null,
+        "customfield_14731": "2|xzpw6g:",
+        "customfield_14732": "0|10x7z4:",
+        "customfield_10230": null,
+        "reporter": {
+          "self": "https://jira.atlassian.com/rest/api/2/user?username=albert.perez",
+          "name": "albert.perez",
+          "emailAddress": "albert.perez@mecalux.com",
+          "avatarUrls": {
+            "16x16": "https://jira.atlassian.com/secure/useravatar?size=xsmall&avatarId=10612",
+            "24x24": "https://jira.atlassian.com/secure/useravatar?size=small&avatarId=10612",
+            "32x32": "https://jira.atlassian.com/secure/useravatar?size=medium&avatarId=10612",
+            "48x48": "https://jira.atlassian.com/secure/useravatar?avatarId=10612"
+          },
+          "displayName": "Albert Pérez",
+          "active": true
+        },
+        "customfield_14532": null,
+        "customfield_13231": null,
+        "updated": "2013-06-27T03:38:19.000+0000",
+        "created": "2013-04-19T15:54:59.000+0000",
+        "customfield_10180": null,
+        "description": null,
+        "priority": {
+          "self": "https://jira.atlassian.com/rest/api/2/priority/4",
+          "iconUrl": "https://jira.atlassian.com/images/icons/priorities/minor.png",
+          "name": "Minor",
+          "id": "4"
+        },
+        "issuelinks": [
+          {
+            "id": "103354",
+            "self": "https://jira.atlassian.com/rest/api/2/issueLink/103354",
+            "type": {
+              "id": "10020",
+              "name": "Blocker",
+              "inward": "is blocked by",
+              "outward": "blocks",
+              "self": "https://jira.atlassian.com/rest/api/2/issueLinkType/10020"
+            },
+            "outwardIssue": {
+              "id": "283131",
+              "key": "DEMO-2501",
+              "self": "https://jira.atlassian.com/rest/api/2/issue/283131",
+              "fields": {
+                "summary": "Test",
+                "status": {
+                  "self": "https://jira.atlassian.com/rest/api/2/status/1",
+                  "description": "The issue is open and ready for the assignee to start work on it.",
+                  "iconUrl": "https://jira.atlassian.com/images/icons/statuses/open.png",
+                  "name": "Open",
+                  "id": "1",
+                  "statusCategory": {
+                    "self": "https://jira.atlassian.com/rest/api/2/statuscategory/2",
+                    "id": 2,
+                    "key": "new",
+                    "colorName": "blue-gray",
+                    "name": "New"
+                  }
+                },
+                "priority": {
+                  "self": "https://jira.atlassian.com/rest/api/2/priority/4",
+                  "iconUrl": "https://jira.atlassian.com/images/icons/priorities/minor.png",
+                  "name": "Minor",
+                  "id": "4"
+                },
+                "issuetype": {
+                  "self": "https://jira.atlassian.com/rest/api/2/issuetype/4",
+                  "id": "4",
+                  "description": "An improvement or enhancement to an existing feature or task.",
+                  "iconUrl": "https://jira.atlassian.com/images/icons/issuetypes/improvement.png",
+                  "name": "Improvement",
+                  "subtask": false
+                }
+              }
+            }
+          }
+        ],
+        "customfield_13430": null,
+        "customfield_13230": null,
+        "customfield_14430": null,
+        "subtasks": [],
+        "status": {
+          "self": "https://jira.atlassian.com/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "https://jira.atlassian.com/images/icons/statuses/open.png",
+          "name": "Open",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://jira.atlassian.com/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        },
+        "labels": [],
+        "parent": {
+          "id": "172720",
+          "key": "XWORK-50",
+          "self": "https://jira.atlassian.com/rest/api/2/issue/172720",
+          "fields": {
+            "summary": "  Introduce DEBUG logging in the project for better troubleshooting XSRF token.",
+            "status": {
+              "self": "https://jira.atlassian.com/rest/api/2/status/1",
+              "description": "The issue is open and ready for the assignee to start work on it.",
+              "iconUrl": "https://jira.atlassian.com/images/icons/statuses/open.png",
+              "name": "Open",
+              "id": "1",
+              "statusCategory": {
+                "self": "https://jira.atlassian.com/rest/api/2/statuscategory/2",
+                "id": 2,
+                "key": "new",
+                "colorName": "blue-gray",
+                "name": "New"
+              }
+            },
+            "priority": {
+              "self": "https://jira.atlassian.com/rest/api/2/priority/4",
+              "iconUrl": "https://jira.atlassian.com/images/icons/priorities/minor.png",
+              "name": "Minor",
+              "id": "4"
+            },
+            "issuetype": {
+              "self": "https://jira.atlassian.com/rest/api/2/issuetype/4",
+              "id": "4",
+              "description": "An improvement or enhancement to an existing feature or task.",
+              "iconUrl": "https://jira.atlassian.com/images/icons/issuetypes/improvement.png",
+              "name": "Improvement",
+              "subtask": false
+            }
+          }
+        },
+        "workratio": -1,
+        "customfield_12832": null,
+        "customfield_12833": null,
+        "customfield_12531": "Not Started",
+        "project": {
+          "self": "https://jira.atlassian.com/rest/api/2/project/11983",
+          "id": "11983",
+          "key": "XWORK",
+          "name": "atlassian-xwork",
+          "avatarUrls": {
+            "16x16": "https://jira.atlassian.com/secure/projectavatar?size=xsmall&pid=11983&avatarId=10011",
+            "24x24": "https://jira.atlassian.com/secure/projectavatar?size=small&pid=11983&avatarId=10011",
+            "32x32": "https://jira.atlassian.com/secure/projectavatar?size=medium&pid=11983&avatarId=10011",
+            "48x48": "https://jira.atlassian.com/secure/projectavatar?pid=11983&avatarId=10011"
+          },
+          "projectCategory": {
+            "self": "https://jira.atlassian.com/rest/api/2/projectCategory/10030",
+            "id": "10030",
+            "description": "Set of common libraries used by multiple Atlassian products",
+            "name": "Common Modules"
+          }
+        },
+        "customfield_12931": null,
+        "environment": null,
+        "aggregateprogress": {
+          "progress": 0,
+          "total": 0
+        },
+        "lastViewed": null,
+        "components": [
+          {
+            "self": "https://jira.atlassian.com/rest/api/2/component/12504",
+            "id": "12504",
+            "name": "General"
+          }
+        ],
+        "timeoriginalestimate": null,
+        "customfield_10150": [
+          "albert.perez(albert.perez)"
+        ],
+        "customfield_11436": "186519",
+        "customfield_11435": "186519",
+        "customfield_11437": "186240",
+        "votes": {
+          "self": "https://jira.atlassian.com/rest/api/2/issue/XWORK-97/votes",
+          "votes": 0,
+          "hasVoted": false
+        },
+        "resolution": null,
+        "fixVersions": [],
+        "customfield_10680": null,
+        "resolutiondate": null,
+        "creator": {
+          "self": "https://jira.atlassian.com/rest/api/2/user?username=albert.perez",
+          "name": "albert.perez",
+          "emailAddress": "albert.perez@mecalux.com",
+          "avatarUrls": {
+            "16x16": "https://jira.atlassian.com/secure/useravatar?size=xsmall&avatarId=10612",
+            "24x24": "https://jira.atlassian.com/secure/useravatar?size=small&avatarId=10612",
+            "32x32": "https://jira.atlassian.com/secure/useravatar?size=medium&avatarId=10612",
+            "48x48": "https://jira.atlassian.com/secure/useravatar?avatarId=10612"
+          },
+          "displayName": "Albert Pérez",
+          "active": true
+        },
+        "aggregatetimeoriginalestimate": null,
+        "customfield_10161": "true",
+        "customfield_12430": null,
+        "customfield_10160": "41040000",
+        "customfield_12431": null,
+        "customfield_12432": null,
+        "customfield_12433": null,
+        "customfield_12831": null,
+        "customfield_12434": null,
+        "customfield_12830": null,
+        "customfield_12435": null,
+        "customfield_12730": null,
+        "duedate": null,
+        "watches": {
+          "self": "https://jira.atlassian.com/rest/api/2/issue/XWORK-97/watchers",
+          "watchCount": 3,
+          "isWatching": false
+        },
+        "customfield_11631": null,
+        "customfield_11130": "204870",
+        "customfield_10651": null,
+        "customfield_10650": null,
+        "customfield_11230": null,
+        "customfield_10653": null,
+        "assignee": null,
+        "customfield_14130": null,
+        "aggregatetimeestimate": null,
+        "versions": [
+          {
+            "self": "https://jira.atlassian.com/rest/api/2/version/15524",
+            "id": "15524",
+            "description": "",
+            "name": "1.11",
+            "archived": false,
+            "released": true,
+            "releaseDate": "2010-08-18"
+          }
+        ],
+        "customfield_14330": null,
+        "customfield_12131": null,
+        "customfield_14735": "0|10vzcg:",
+        "timeestimate": null,
+        "customfield_11531": null,
+        "customfield_11433": "193791",
+        "customfield_11434": "186193",
+        "customfield_11930": null,
+        "customfield_11431": "209824",
+        "customfield_12130": null,
+        "aggregatetimespent": null
+      }
+    }
+  ]
+}

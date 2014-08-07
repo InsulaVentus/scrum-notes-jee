@@ -1,22 +1,27 @@
 package no.agricolas.scrumnotes.jira.service;
 
 import no.agricolas.scrumnotes.domain.SubtaskNote;
+import no.agricolas.scrumnotes.jira.utils.JiraParseClient;
+import no.agricolas.scrumnotes.jira.utils.JiraRestClient;
+import no.agricolas.scrumnotes.jira.utils.JqlOperation;
 
+import java.io.InputStream;
 import java.util.List;
 
 /**
- * Methods exposing functionality in the jira module
+ * Jira service
  *
  * @author Øyvind Strømmen
  */
-public interface SimpleJiraService {
+public class SimpleJiraService implements JiraService {
 
     /**
-     * Fetch all sub issues from an issue, given the issue id
-     *
-     * @param jiraId the id of the parent issue
-     * @return the sub issues as a List of {@link SubtaskNote}
+     * {@inheritDoc}
      */
-    public List<SubtaskNote> getSubIssues(String jiraId);
-
+    @Override
+    public List<SubtaskNote> getSubIssues(String jiraId) {
+        InputStream stream = JiraRestClient.executeJqlQuery(jiraId, JqlOperation.GET_SUB_ISSUES);
+        JiraParseClient parseClient = new JiraParseClient();
+        return parseClient.getIssues(stream);
+    }
 }

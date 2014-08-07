@@ -1,0 +1,62 @@
+{
+    "expand": "names,schema",
+    "startAt": 0,
+    "maxResults": 1,
+    "total": 7415,
+    "issues": [
+        {
+            "expand": "editmeta,renderedFields,transitions,changelog,operations",
+            "id": "272441",
+            "self": "https://jira.atlassian.com/rest/api/2/issue/272441",
+            "key": "PKDRAGE-1337",
+            "fields": {
+                "summary": "Subtask",
+                "issuetype": {
+                    "self": "https://jira.atlassian.com/rest/api/2/issuetype/6",
+                    "id": "6",
+                    "description": "The sub-task of the issue",
+                    "iconUrl": "https://jira.atlassian.com/images/icons/issuetypes/subtask_alternate.png",
+                    "name": "Sub-task",
+                    "subtask": true
+                },
+                "parent": {
+                    "id": "172720",
+                    "key": "XWORK-50",
+                    "self": "https://jira.atlassian.com/rest/api/2/issue/172720",
+                    "fields": {
+                        "summary": "  Introduce DEBUG logging in the project for better troubleshooting XSRF token.",
+                        "status": {
+                            "self": "https://jira.atlassian.com/rest/api/2/status/1",
+                            "description": "The issue is open and ready for the assignee to start work on it.",
+                            "iconUrl": "https://jira.atlassian.com/images/icons/statuses/open.png",
+                            "name": "Open",
+                            "id": "1",
+                            "statusCategory": {
+                                "self": "https://jira.atlassian.com/rest/api/2/statuscategory/2",
+                                "id": 2,
+                                "key": "new",
+                                "colorName": "blue-gray",
+                                "name": "New"
+                            }
+                        },
+                        "priority": {
+                            "self": "https://jira.atlassian.com/rest/api/2/priority/4",
+                            "iconUrl": "https://jira.atlassian.com/images/icons/priorities/minor.png",
+                            "name": "Minor",
+                            "id": "4"
+                        },
+                        "issuetype": {
+                            "self": "https://jira.atlassian.com/rest/api/2/issuetype/4",
+                            "id": "4",
+                            "description": "An improvement or enhancement to an existing feature or task.",
+                            "iconUrl": "https://jira.atlassian.com/images/icons/issuetypes/improvement.png",
+                            "name": "Improvement",
+                            "subtask": false
+                        }
+                    }
+                },
+                "timeoriginalestimate": null
+            }
+        }
+    ]
+}
