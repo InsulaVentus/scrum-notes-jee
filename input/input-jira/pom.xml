@@ -8,7 +8,7 @@
     <groupId>no.agricolas.scrumnotes.input.jira</groupId>
     <artifactId>input-jira</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <name>input-jira</name>
     <description>Root pom for input-ira</description>
 
@@ -36,7 +36,6 @@
             <artifactId>hamcrest-core</artifactId>
             <version>1.3</version>
         </dependency>
-
     </dependencies>
 
 </project>

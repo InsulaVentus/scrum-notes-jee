@@ -3,6 +3,7 @@
 out/*
 output/output-excel/target/*
 common/common-domain/target/*
+input/input-jira/target/*
 
 # Files #
 *.class
