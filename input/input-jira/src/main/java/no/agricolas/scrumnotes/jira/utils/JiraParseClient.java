@@ -1,7 +1,5 @@
 package no.agricolas.scrumnotes.jira.utils;
 
-import no.agricolas.scrumnotes.domain.SubtaskNote;
-
 import javax.json.Json;
 import javax.json.stream.JsonParser;
 import javax.json.stream.JsonParserFactory;
@@ -15,7 +13,7 @@ import static javax.json.stream.JsonParser.Event;
  */
 public class JiraParseClient {
 
-    public List<SubtaskNote> getIssues(InputStream inputStream) {
+    public <T> List<T> getIssues(InputStream inputStream, Class<T> clazz) {
 
         JsonParserFactory factory = Json.createParserFactory(null);
         JsonParser parser = factory.createParser(inputStream);

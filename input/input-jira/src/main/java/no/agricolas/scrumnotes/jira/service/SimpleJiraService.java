@@ -22,6 +22,6 @@ public class SimpleJiraService implements JiraService {
     public List<SubtaskNote> getSubIssues(String jiraId) {
         InputStream stream = JiraRestClient.executeJqlQuery(jiraId, JqlOperation.GET_SUB_ISSUES);
         JiraParseClient parseClient = new JiraParseClient();
-        return parseClient.getIssues(stream);
+        return parseClient.getIssues(stream, SubtaskNote.class);
     }
 }

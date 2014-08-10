@@ -3,11 +3,20 @@ package no.agricolas.scrumnotes.domain;
 /**
  * @author Simen Søhol
  */
+@Base("issues")
 public class SubtaskNote {
-    private String header;
+
     private String parentTask;
+
+    @Field("key")
+    private String header;
+
+    @Field("fields:summary")
     private String note;
+
     private String etc;
+
+    @Field("fields:issuetype:name")
     private SubtaskType subtaskType;
 
     public SubtaskNote(String header, String parentTask, String note, String etc, SubtaskType subtaskType) {
