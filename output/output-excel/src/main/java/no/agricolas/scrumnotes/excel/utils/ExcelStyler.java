@@ -8,7 +8,6 @@ import jxl.format.Colour;
 import jxl.write.*;
 import jxl.write.biff.RowsExceededException;
 
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -23,6 +22,12 @@ public class ExcelStyler {
     private static final int PARENT_HEIGHT = 20 * 20;
     private static final int NOTE_HEIGHT = 90 * 20;
     private static final int ETC_HEIGHT = 20 * 20;
+
+    ColorSorter colorSorter;
+
+    public ExcelStyler() {
+        colorSorter = new ColorSorter();
+    }
 
     /**
      * Sets the size on each note
@@ -73,7 +78,7 @@ public class ExcelStyler {
      * @return random backgroundcolor
      */
     public Colour getRandomParentColor() {
-        List<Colour> colorList = Arrays.asList(Colour.getAllColours());
+        List<Colour> colorList = colorSorter.getListWithoutDarkColors();
 
         int randomColor = (int) (Math.random() * colorList.size()) + 1;
 
