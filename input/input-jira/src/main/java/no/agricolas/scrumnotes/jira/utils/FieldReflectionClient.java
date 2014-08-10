@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
  */
 public class FieldReflectionClient {
 
-    public void extractFields(Class clazz) {
+    public <T> TreeNode<String> extractFields(Class<T> clazz) {
 
 
         Class obj = clazz;
@@ -31,5 +31,7 @@ public class FieldReflectionClient {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+
+        return null;
     }
 }

@@ -19,6 +19,10 @@ public class SubtaskNote {
     @Field("fields:issuetype:name")
     private SubtaskType subtaskType;
 
+    public SubtaskNote() {
+
+    }
+
     public SubtaskNote(String header, String parentTask, String note, String etc, SubtaskType subtaskType) {
         setHeader(header);
         setParentTask(parentTask);

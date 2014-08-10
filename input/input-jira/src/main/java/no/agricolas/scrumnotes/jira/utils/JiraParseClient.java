@@ -15,6 +15,9 @@ public class JiraParseClient {
 
     public <T> List<T> getIssues(InputStream inputStream, Class<T> clazz) {
 
+        FieldReflectionClient reflectionClient = new FieldReflectionClient();
+        TreeNode<String> searchTree = reflectionClient.extractFields(clazz);
+
         JsonParserFactory factory = Json.createParserFactory(null);
         JsonParser parser = factory.createParser(inputStream);
 
