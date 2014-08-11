@@ -3,20 +3,20 @@ package no.agricolas.scrumnotes.domain;
 /**
  * @author Simen Søhol
  */
-@Base("issues")
+@JSONBase("issues")
 public class SubtaskNote {
 
     private String parentTask;
 
-    @Field("key")
+    @JSONField("key")
     private String header;
 
-    @Field("fields:summary")
+    @JSONField("fields:summary")
     private String note;
 
     private String etc;
 
-    @Field("fields:issuetype:name")
+    @JSONField("fields:issuetype:name")
     private SubtaskType subtaskType;
 
     public SubtaskNote() {

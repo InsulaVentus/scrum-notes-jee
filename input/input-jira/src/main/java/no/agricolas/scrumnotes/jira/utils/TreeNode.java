@@ -1,7 +1,7 @@
 package no.agricolas.scrumnotes.jira.utils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Øyvind Strømmen
@@ -10,13 +10,17 @@ public class TreeNode<N> {
 
     private TreeNode<N> parent;
 
-    private List<TreeNode<N>> children;
+    private Map<TreeNode<N>, TreeNode<N>> children;
 
     private N content;
 
+    public TreeNode() {
+        this(null);
+    }
+
     public TreeNode(N content) {
         this.content = content;
-        this.children = new ArrayList<TreeNode<N>>();
+        this.children = new HashMap<TreeNode<N>, TreeNode<N>>();
     }
 
     public TreeNode<N> getRootNode() {
@@ -31,16 +35,30 @@ public class TreeNode<N> {
         return parent == null;
     }
 
-    public void addChild(TreeNode<N> childNode) {
-        childNode.parent = this;
-        children.add(childNode);
+    public Boolean addChild(TreeNode<N> childNode) {
+        if (!children.containsKey(childNode)) {
+            children.put(childNode, childNode);
+            childNode.parent = this;
+            return true;
+        }
+        return false;
+    }
+
+    public TreeNode<N> getChild(TreeNode<N> childNode) {
+        return children.get(childNode);
     }
 
     public N getContent() {
         return content;
     }
 
-    public List<TreeNode<N>> getChildren() {
+    public void setContent(N content) {
+        this.content = content;
+    }
+
+    public Map<TreeNode<N>, TreeNode<N>> getChildren() {
         return children;
     }
+
+    //TODO: Override equals method
 }
