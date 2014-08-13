@@ -1,5 +1,8 @@
 package no.agricolas.scrumnotes.jira.utils;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,5 +63,27 @@ public class TreeNode<N> {
         return children;
     }
 
-    //TODO: Override equals method
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(content)
+                .toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this) {
+            return true;
+        }
+        if (object == null) {
+            return false;
+        }
+        if (object instanceof TreeNode) {
+            final TreeNode treeNode = (TreeNode) object;
+            return new EqualsBuilder()
+                    .append(content, treeNode.content)
+                    .isEquals();
+        }
+        return true;
+    }
 }
