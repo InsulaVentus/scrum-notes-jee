@@ -21,18 +21,18 @@ public class ColorSorterTest {
     }
 
     @Test
-    public void getListWithoutDarkColors() throws Exception {
-        assertList(colorSorter.getListWithoutDarkColors());
+    public void getListWithoutUnvalidColors() throws Exception {
+        assertList(colorSorter.getListWithoutUnvalidColors());
     }
 
     private void assertList(List<Colour> colourList) {
         for (Colour colour : colourList) {
-            assertThat(isThisADarkColor(colour), is(false));
+            assertThat(isThisAUnvalidColor(colour), is(false));
         }
     }
 
-    private boolean isThisADarkColor(Colour colour) {
-        for (Colour darkColor : DarkColorFilter.getDarkColorsToFilter()) {
+    private boolean isThisAUnvalidColor(Colour colour) {
+        for (Colour darkColor : ColorFilter.getColorsToFilter()) {
             if (colour == darkColor) {
                 return true;
             }

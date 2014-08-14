@@ -21,9 +21,9 @@ import java.util.List;
  * @author Simen Søhol
  */
 public class ExcelGenerator {
-    private static final String FILENAME = "Note.xls";
+    private static final String FILETYPE = ".xls";
     private static final String SHEETNAME = "Sheet 1";
-    private static final String QA = StringUtils.rightPad("QA", 35, ' ');
+    private static final String QA = StringUtils.rightPad("QA", 25, ' ');
     private static final int A4_HEIGHT = 18;
     private static final int INCREASE_COLUMN = 2;
     private static final int HEIGHT_OF_NOTE = 6;
@@ -34,9 +34,9 @@ public class ExcelGenerator {
         excelStyler = new ExcelStyler();
     }
 
-    public boolean createNotesFromSubtask(List<SubtaskNote> subtaskList) {
+    public boolean createNotesFromSubtask(List<SubtaskNote> subtaskList, String path) {
         try {
-            WritableWorkbook excelWorkbook = Workbook.createWorkbook(new File(FILENAME));
+            WritableWorkbook excelWorkbook = Workbook.createWorkbook(new File(path + FILETYPE));
             WritableSheet sheet = excelWorkbook.createSheet(SHEETNAME, 0);
 
             generateNotesFromList(sheet, subtaskList);

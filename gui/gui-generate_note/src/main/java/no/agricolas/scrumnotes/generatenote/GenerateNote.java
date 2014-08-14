@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 /**
  * @author Simen Søhol
@@ -14,13 +17,15 @@ public class GenerateNote extends JFrame {
     private static final int GRID_WIDTH = 2;
     private static final int GRID_HEIGHT = 3;
     private static final String APPNAME = "Scrumnotes";
-    private JButton btnSave = new JButton("Save");
+
+    private JButton btnSave = new JButton("Generate");
     private JButton btnExit = new JButton("Exit");
     private JTextField filename = new JTextField();
     private JTextField dir = new JTextField();
     private JTextField url = new JTextField();
+
     private JLabel urlLabel = new JLabel("URL til parent");
-    private JLabel dirLabel = new JLabel("Lagres på");
+    private JLabel dirLabel = new JLabel("Filen er lagret på");
     private JLabel filenameLabel = new JLabel("Filnavn");
 
     public GenerateNote() {
@@ -50,7 +55,7 @@ public class GenerateNote extends JFrame {
         }
     }
 
-    private class ButtonPanel extends JPanel implements ActionListener{
+    private class ButtonPanel extends JPanel implements ActionListener {
         public ButtonPanel() {
             btnSave.addActionListener(this);
             btnExit.addActionListener(this);
@@ -63,31 +68,34 @@ public class GenerateNote extends JFrame {
             JButton button = (JButton) e.getSource();
 
             if (button == btnSave) {
-
+                saveDialog();
             } else {
                 System.exit(0);
             }
         }
     }
 
+    private void saveDialog() {
+        JFileChooser c = new JFileChooser();
+        int rVal = c.showSaveDialog(GenerateNote.this);
+        if (rVal == JFileChooser.APPROVE_OPTION) {
+            filename.setText(c.getSelectedFile().getName());
+            dir.setText(c.getCurrentDirectory().toString());
 
-    class SaveDialog implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            JFileChooser c = new JFileChooser();
-            // Demonstrate "Save" dialog:
-            int rVal = c.showSaveDialog(GenerateNote.this);
-            if (rVal == JFileChooser.APPROVE_OPTION) {
-                filename.setText(c.getSelectedFile().getName());
-                dir.setText(c.getCurrentDirectory().toString());
-            }
-            if (rVal == JFileChooser.CANCEL_OPTION) {
-                filename.setText("You pressed cancel");
-                dir.setText("");
-            }
+            String path = dir.getText() + File.separator + filename.getText();
+            generateScrumnote(path);
+        }
+        if (rVal == JFileChooser.CANCEL_OPTION) {
+            filename.setText("You pressed cancel");
+            dir.setText("");
         }
     }
 
-    public static void main(String [] args) {
+    private void generateScrumnote(String path) {
+        //call service
+    }
+
+    public static void main(String[] args) {
         new GenerateNote();
     }
 }

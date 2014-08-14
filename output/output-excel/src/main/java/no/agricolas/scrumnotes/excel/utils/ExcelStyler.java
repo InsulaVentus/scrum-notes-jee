@@ -78,9 +78,9 @@ public class ExcelStyler {
      * @return random backgroundcolor
      */
     public Colour getRandomParentColor() {
-        List<Colour> colorList = colorSorter.getListWithoutDarkColors();
+        List<Colour> colorList = colorSorter.getListWithoutUnvalidColors();
 
-        int randomColor = (int) (Math.random() * colorList.size()) + 1;
+        int randomColor = (int) (Math.random() * colorList.size());
 
         return colorList.get(randomColor);
     }

@@ -8,5 +8,5 @@ import java.util.List;
  * @author Simen Søhol
  */
 public interface SimpleGeneratorService {
-    public boolean createNotesFromSubtask(List<SubtaskNote> subtaskList);
+    public boolean createNotesFromSubtask(List<SubtaskNote> subtaskList, String path);
 }

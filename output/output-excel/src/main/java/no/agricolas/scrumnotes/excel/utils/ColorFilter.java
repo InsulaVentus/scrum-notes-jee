@@ -11,9 +11,9 @@ import static java.util.Arrays.asList;
  *
  * @author Simen Søhol
  */
-public class DarkColorFilter {
+public class ColorFilter {
 
-    public static List<Colour> getDarkColorsToFilter() {
+    public static List<Colour> getColorsToFilter() {
         return asList(
                 Colour.DARK_BLUE,
                 Colour.DARK_BLUE2,
@@ -25,7 +25,17 @@ public class DarkColorFilter {
                 Colour.DARK_YELLOW,
                 Colour.BLACK,
                 Colour.BLUE,
-                Colour.BLUE2
+                Colour.BLUE2,
+                Colour.DEFAULT_BACKGROUND,
+                Colour.DEFAULT_BACKGROUND1,
+                Colour.PALETTE_BLACK,
+                Colour.UNKNOWN,
+                Colour.LIGHT_TURQUOISE,
+                Colour.LIGHT_GREEN,
+                Colour.LIGHT_ORANGE,
+                Colour.PINK,
+                Colour.PINK2,
+                Colour.BROWN
         );
     }
 }

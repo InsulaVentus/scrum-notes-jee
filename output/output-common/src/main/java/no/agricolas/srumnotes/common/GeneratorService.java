@@ -12,7 +12,7 @@ public class GeneratorService implements SimpleGeneratorService {
     private ExcelGenerator excelGenerator = new ExcelGenerator();
 
     @Override
-    public boolean createNotesFromSubtask(List<SubtaskNote> subtaskList) {
-        return excelGenerator.createNotesFromSubtask(subtaskList);
+    public boolean createNotesFromSubtask(List<SubtaskNote> subtaskList, String path) {
+        return excelGenerator.createNotesFromSubtask(subtaskList, path);
     }
 }

@@ -36,7 +36,7 @@ public class ExcelGeneratorTest {
             subtaskNoteList.add(subtaskNoteAnnet);
         }
 
-        boolean generatedExcelFile = excelGenerator.createNotesFromSubtask(subtaskNoteList);
+        boolean generatedExcelFile = excelGenerator.createNotesFromSubtask(subtaskNoteList, "Note");
 
         assertThat(generatedExcelFile, is(true));
     }

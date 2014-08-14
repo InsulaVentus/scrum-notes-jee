@@ -12,8 +12,8 @@ import static java.util.Arrays.asList;
  */
 public class ColorSorter {
 
-    public List<Colour> getListWithoutDarkColors() {
-        return removeDarkColors(asList(Colour.getAllColours()));
+    public List<Colour> getListWithoutUnvalidColors() {
+        return removeColors(asList(Colour.getAllColours()));
     }
 
     /**
@@ -22,7 +22,7 @@ public class ColorSorter {
      * @param colourList the colorlist to filter
      * @return colourlist without dark colors
      */
-    private List<Colour> removeDarkColors(List<Colour> colourList) {
+    private List<Colour> removeColors(List<Colour> colourList) {
         List<Colour> lightList = new ArrayList<Colour>();
         for (Colour colour : colourList) {
             if (!darkColor(colour)) {
@@ -40,7 +40,7 @@ public class ColorSorter {
      * @return true if colour is dark
      */
     private boolean darkColor(Colour colour) {
-        for (Colour darkColor : DarkColorFilter.getDarkColorsToFilter()) {
+        for (Colour darkColor : ColorFilter.getColorsToFilter()) {
             if (colour == darkColor) {
                 return true;
             }
