@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>no.agricolas.scrumnotes.gui.generate_note</groupId>
+    <artifactId>gui-generate_note</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>gui-generate_note</name>
+    <description>Root pom for GENERATE_NOTE</description>
+
+    <parent>
+        <groupId>no.agricolas.scrumnotes.gui</groupId>
+        <artifactId>gui</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>no.agricolas.scrumnotes.input.common</groupId>
+            <artifactId>input-common</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+</project>
