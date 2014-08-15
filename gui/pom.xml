@@ -22,4 +22,12 @@
         <module>gui-generate_note</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>no.agricolas.scrumnotes.common.domain</groupId>
+            <artifactId>common-domain</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 </project>

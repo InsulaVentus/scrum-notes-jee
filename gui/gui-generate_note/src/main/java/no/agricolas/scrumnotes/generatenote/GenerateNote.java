@@ -1,12 +1,13 @@
 package no.agricolas.scrumnotes.generatenote;
 
+import no.agricolas.srumnotes.common.GeneratorService;
+import no.agricolas.srumnotes.common.SimpleGeneratorService;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 
 /**
  * @author Simen Søhol
@@ -17,6 +18,8 @@ public class GenerateNote extends JFrame {
     private static final int GRID_WIDTH = 2;
     private static final int GRID_HEIGHT = 3;
     private static final String APPNAME = "Scrumnotes";
+
+    private SimpleGeneratorService simpleGeneratorService = new GeneratorService();
 
     private JButton btnSave = new JButton("Generate");
     private JButton btnExit = new JButton("Exit");
@@ -92,7 +95,9 @@ public class GenerateNote extends JFrame {
     }
 
     private void generateScrumnote(String path) {
-        //call service
+        ScrumNotesStub stub = new ScrumNotesStub();
+        simpleGeneratorService.createNotesFromSubtask(stub.getSubtasks(url.getText()), path);
+
     }
 
     public static void main(String[] args) {
