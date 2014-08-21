@@ -12,12 +12,9 @@ import java.io.File;
 /**
  * @author Simen Søhol
  */
-public class GenerateNote extends JFrame {
-    private static final int JFRAME_WIDTH_SIZE = 400;
-    private static final int JFRAME_HEIGHT_SIZE = 250;
+public class GenerateNote extends JPanel {
     private static final int GRID_WIDTH = 2;
     private static final int GRID_HEIGHT = 3;
-    private static final String APPNAME = "Scrumnotes";
 
     private SimpleGeneratorService simpleGeneratorService = new GeneratorService();
 
@@ -32,15 +29,8 @@ public class GenerateNote extends JFrame {
     private JLabel filenameLabel = new JLabel("Filnavn");
 
     public GenerateNote() {
-        setTitle(APPNAME);
         add(new FileInfoPanel(), BorderLayout.NORTH);
         add(new ButtonPanel(), BorderLayout.SOUTH);
-
-        setResizable(false);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(JFRAME_WIDTH_SIZE, JFRAME_HEIGHT_SIZE);
-        setLocationRelativeTo(null);
-        setVisible(true);
     }
 
     private class FileInfoPanel extends JPanel {
@@ -63,18 +53,11 @@ public class GenerateNote extends JFrame {
             btnSave.addActionListener(this);
             btnExit.addActionListener(this);
             add(btnSave);
-            add(btnExit);
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JButton button = (JButton) e.getSource();
-
-            if (button == btnSave) {
-                saveDialog();
-            } else {
-                System.exit(0);
-            }
+            saveDialog();
         }
     }
 
@@ -97,10 +80,5 @@ public class GenerateNote extends JFrame {
     private void generateScrumnote(String path) {
         ScrumNotesStub stub = new ScrumNotesStub();
         simpleGeneratorService.createNotesFromSubtask(stub.getSubtasks(url.getText()), path);
-
-    }
-
-    public static void main(String[] args) {
-        new GenerateNote();
     }
 }
