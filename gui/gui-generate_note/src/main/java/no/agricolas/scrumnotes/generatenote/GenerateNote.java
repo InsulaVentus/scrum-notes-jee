@@ -13,45 +13,57 @@ import java.io.File;
  * @author Simen Søhol
  */
 public class GenerateNote extends JPanel {
-    private static final int GRID_WIDTH = 2;
-    private static final int GRID_HEIGHT = 3;
+    private static final int GRID_WIDTH = 1;
+    private static final int GRID_HEIGHT = 4;
 
     private SimpleGeneratorService simpleGeneratorService = new GeneratorService();
 
     private JButton btnSave = new JButton("Generate");
-    private JButton btnExit = new JButton("Exit");
-    private JTextField filename = new JTextField();
-    private JTextField dir = new JTextField();
+
     private JTextField url = new JTextField();
 
-    private JLabel urlLabel = new JLabel("URL til parent");
-    private JLabel dirLabel = new JLabel("Filen er lagret på");
-    private JLabel filenameLabel = new JLabel("Filnavn");
+    private JLabel urlLabel = new JLabel("Task url");
+    private JLabel parentLabel = new JLabel("Parent task");
 
     public GenerateNote() {
-        add(new FileInfoPanel(), BorderLayout.NORTH);
-        add(new ButtonPanel(), BorderLayout.SOUTH);
+        setLayout(new GridLayout(2, 1));
+        add(new TopPanel(), BorderLayout.NORTH);
+        add(new ButtonPanel(), BorderLayout.CENTER);
     }
 
-    private class FileInfoPanel extends JPanel {
-
-        public FileInfoPanel() {
-            dir.setEditable(false);
-            filename.setEditable(false);
+    private class TopPanel extends JPanel {
+        public TopPanel() {
             setLayout(new GridLayout(GRID_HEIGHT, GRID_WIDTH));
+
             add(urlLabel);
             add(url);
-            add(filenameLabel);
-            add(filename);
-            add(dirLabel);
-            add(dir);
+            add(parentLabel);
+            add(new RadioPanel(), BorderLayout.WEST);
+        }
+    }
+
+    private class RadioPanel extends JPanel {
+        public RadioPanel(){
+            setLayout(new GridLayout(1, 10));
+
+            JRadioButton yes = new JRadioButton("Yes");
+            yes.setSelected(true);
+
+            JRadioButton no = new JRadioButton("No");
+
+
+            ButtonGroup buttonGroup = new ButtonGroup();
+            buttonGroup.add(yes);
+            buttonGroup.add(no);
+            add(yes);
+            add(no);
         }
     }
 
     private class ButtonPanel extends JPanel implements ActionListener {
         public ButtonPanel() {
+            setLayout(new FlowLayout());
             btnSave.addActionListener(this);
-            btnExit.addActionListener(this);
             add(btnSave);
         }
 
@@ -65,15 +77,11 @@ public class GenerateNote extends JPanel {
         JFileChooser c = new JFileChooser();
         int rVal = c.showSaveDialog(GenerateNote.this);
         if (rVal == JFileChooser.APPROVE_OPTION) {
-            filename.setText(c.getSelectedFile().getName());
-            dir.setText(c.getCurrentDirectory().toString());
+            String filename = c.getSelectedFile().getName();
+            String dir = c.getCurrentDirectory().toString();
 
-            String path = dir.getText() + File.separator + filename.getText();
+            String path = dir + File.separator + filename;
             generateScrumnote(path);
-        }
-        if (rVal == JFileChooser.CANCEL_OPTION) {
-            filename.setText("You pressed cancel");
-            dir.setText("");
         }
     }
 

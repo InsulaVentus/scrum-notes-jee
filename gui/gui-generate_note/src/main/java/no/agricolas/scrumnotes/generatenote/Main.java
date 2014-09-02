@@ -10,14 +10,14 @@ import java.awt.event.ActionListener;
  */
 public class Main extends JFrame {
     private static final int JFRAME_WIDTH_SIZE = 600;
-    private static final int JFRAME_HEIGHT_SIZE = 450;
+    private static final int JFRAME_HEIGHT_SIZE = 300;
 
     private JButton btnExit = new JButton("Exit");
 
     public Main() {
         setTitle("SRUMNOTES");
 
-        add(new TabFrame());
+        add(new TabFrame(), BorderLayout.CENTER);
         add(new ButtonPanel(), BorderLayout.SOUTH);
 
         setResizable(false);
@@ -32,8 +32,8 @@ public class Main extends JFrame {
         private static final String TITLE_BURNDOWN = "Generate Burndown";
 
         public TabFrame() {
-            add(TITLE_NOTE, new GenerateNote());
-            add(TITLE_BURNDOWN, new JPanel());
+            addTab(TITLE_NOTE, new GenerateNote());
+            addTab(TITLE_BURNDOWN, new JPanel());
         }
     }
 
