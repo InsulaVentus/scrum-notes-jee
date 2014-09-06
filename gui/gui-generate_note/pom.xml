@@ -7,7 +7,7 @@
 
     <groupId>no.agricolas.scrumnotes.gui.generate_note</groupId>
     <artifactId>gui-generate_note</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <name>gui-generate_note</name>
     <description>Root pom for GENERATE_NOTE</description>
 
@@ -30,5 +30,25 @@
             <version>0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>no.agricolas.scrumnotes.generatenote.Main</mainClass>
+                            </manifest>
+                        </archive>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
