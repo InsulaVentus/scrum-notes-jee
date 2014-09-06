@@ -13,9 +13,10 @@ import static javax.json.stream.JsonParser.Event;
  */
 public class JiraParseClient {
 
+    private FieldReflectionClient reflectionClient;
+
     public <T> List<T> getIssues(InputStream inputStream, Class<T> clazz) {
 
-        FieldReflectionClient reflectionClient = new FieldReflectionClient();
         TreeNode<String> searchTree = reflectionClient.extractFields(clazz);
 
         JsonParserFactory factory = Json.createParserFactory(null);
@@ -33,5 +34,9 @@ public class JiraParseClient {
             }
         }
         return null;
+    }
+
+    public void setReflectionClient(FieldReflectionClient reflectionClient) {
+        this.reflectionClient = reflectionClient;
     }
 }
