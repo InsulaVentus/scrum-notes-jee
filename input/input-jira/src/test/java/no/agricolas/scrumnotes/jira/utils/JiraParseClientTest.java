@@ -1,6 +1,6 @@
 package no.agricolas.scrumnotes.jira.utils;
 
-import no.agricolas.scrumnotes.domain.SubtaskNote;
+import no.agricolas.scrumnotes.jira.utils.mock_entities.SimpleJiraEntity;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -22,10 +22,10 @@ public class JiraParseClientTest {
     @Ignore
     @Test
     public void assertThatWhenEmptyResultObjectIsEmpty() {
-        List<SubtaskNote> excpectedList = asList(
-                new SubtaskNote(null, null, null, null, null)
+        List<SimpleJiraEntity> excpectedList = asList(
+                new SimpleJiraEntity()
         );
-        assertThat(parseClient.getIssues(mockInputStream(), SubtaskNote.class), is(excpectedList));
+        assertThat(parseClient.getIssues(mockInputStream(), SimpleJiraEntity.class), is(excpectedList));
     }
 
     private InputStream mockInputStream() {
