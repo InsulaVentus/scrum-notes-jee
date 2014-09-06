@@ -7,7 +7,6 @@
 
     <groupId>no.agricolas.scrumnotes.common.domain</groupId>
     <artifactId>common-domain</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>common-domain</name>
     <description>Root pom for common-domain</description>
