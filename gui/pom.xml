@@ -7,7 +7,6 @@
 
     <groupId>no.agricolas.scrumnotes.gui</groupId>
     <artifactId>gui</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>GUI</name>
     <description>Root pom for GUI</description>
