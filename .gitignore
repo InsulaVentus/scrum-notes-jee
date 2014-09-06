@@ -12,3 +12,4 @@ input/target/
 *.iml
 *.xls
 *.DS_Store
+*.jar

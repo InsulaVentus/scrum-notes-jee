@@ -45,6 +45,7 @@
                         <descriptorRefs>
                             <descriptorRef>jar-with-dependencies</descriptorRef>
                         </descriptorRefs>
+                        <outputDirectory>../../</outputDirectory>
                         <finalName>Generate_scrumnotes</finalName>
                         <appendAssemblyId>false</appendAssemblyId>
                     </configuration>
@@ -52,5 +53,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
 </project>
