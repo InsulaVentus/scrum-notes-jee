@@ -14,7 +14,7 @@ import java.io.File;
  */
 public class GenerateNote extends JPanel {
     private static final int GRID_WIDTH = 1;
-    private static final int GRID_HEIGHT = 4;
+    private static final int GRID_HEIGHT = 6;
 
     private SimpleGeneratorService simpleGeneratorService = new GeneratorService();
 
@@ -24,6 +24,10 @@ public class GenerateNote extends JPanel {
 
     private JLabel urlLabel = new JLabel("Task url");
     private JLabel parentLabel = new JLabel("Parent task");
+
+    private JRadioButton radioButtonYes;
+
+    private JRadioButton radioButtonNo;
 
     public GenerateNote() {
         setLayout(new GridLayout(2, 1));
@@ -38,25 +42,9 @@ public class GenerateNote extends JPanel {
             add(urlLabel);
             add(url);
             add(parentLabel);
-            add(new RadioPanel(), BorderLayout.WEST);
-        }
-    }
-
-    private class RadioPanel extends JPanel {
-        public RadioPanel(){
-            setLayout(new GridLayout(1, 10));
-
-            JRadioButton yes = new JRadioButton("Yes");
-            yes.setSelected(true);
-
-            JRadioButton no = new JRadioButton("No");
-
-
-            ButtonGroup buttonGroup = new ButtonGroup();
-            buttonGroup.add(yes);
-            buttonGroup.add(no);
-            add(yes);
-            add(no);
+            createRadioGroup();
+            add(radioButtonYes);
+            add(radioButtonNo);
         }
     }
 
@@ -69,11 +57,27 @@ public class GenerateNote extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            saveDialog();
+            if (radioButtonYes.isSelected()) {
+                System.out.println("YES");
+                saveParentDialog();
+            } else {
+                System.out.println("NO");
+            }
         }
     }
 
-    private void saveDialog() {
+    private void createRadioGroup() {
+        radioButtonYes = new JRadioButton("Yes");
+        radioButtonYes.setSelected(true);
+
+        radioButtonNo = new JRadioButton("No");
+
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(radioButtonYes);
+        buttonGroup.add(radioButtonNo);
+    }
+
+    private void saveParentDialog() {
         JFileChooser c = new JFileChooser();
         int rVal = c.showSaveDialog(GenerateNote.this);
         if (rVal == JFileChooser.APPROVE_OPTION) {
