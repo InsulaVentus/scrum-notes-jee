@@ -7,7 +7,6 @@
 
     <groupId>no.agricolas.scrumnotes.output</groupId>
     <artifactId>output</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>OUTPUT</name>
     <description>Root pom for Output</description>

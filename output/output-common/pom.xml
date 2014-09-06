@@ -7,7 +7,6 @@
 
     <groupId>no.agricolas.scrumnotes.output.excel</groupId>
     <artifactId>output-common</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>output-common</name>
     <description>Root pom for output-common</description>
