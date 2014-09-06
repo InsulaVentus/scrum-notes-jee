@@ -7,7 +7,6 @@
 
     <groupId>no.agricolas.scrumnotes.input.jira</groupId>
     <artifactId>input-jira</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>input-jira</name>
     <description>Root pom for input-ira</description>

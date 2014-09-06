@@ -7,7 +7,6 @@
 
     <groupId>no.agricolas.scrumnotes.input.common</groupId>
     <artifactId>input-common</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>input-common</name>
     <description>Root pom for input-common</description>
