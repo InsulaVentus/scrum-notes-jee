@@ -86,10 +86,10 @@ public class GenerateNote extends JPanel {
 
             String path = dir + File.separator + filename;
             if (radioButtonYes.isSelected()) {
-                System.out.println("YES");
+                System.out.println("PARENT");
                 generateScrumnotesFromParent(path);
             } else {
-                System.out.println("NO");
+                System.out.println("CHILD");
                 generateSingleSrumnoteFromChild();
             }
         }

@@ -45,7 +45,7 @@ public class Main extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.exit(0);
+            System.exit(EXIT_ON_CLOSE);
         }
     }
 
