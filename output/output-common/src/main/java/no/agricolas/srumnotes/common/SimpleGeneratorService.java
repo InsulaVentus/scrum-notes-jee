@@ -1,12 +1,18 @@
 package no.agricolas.srumnotes.common;
 
 import no.agricolas.scrumnotes.domain.SubtaskNote;
+import no.agricolas.scrumnotes.excel.ExcelGenerator;
 
 import java.util.List;
 
 /**
  * @author Simen Søhol
  */
-public interface SimpleGeneratorService {
-    public boolean createNotesFromSubtask(List<SubtaskNote> subtaskList, String path);
+public class SimpleGeneratorService implements GeneratorService {
+    private ExcelGenerator excelGenerator = new ExcelGenerator();
+
+    @Override
+    public boolean createNotesFromSubtask(List<SubtaskNote> subtaskList, String path) {
+        return excelGenerator.createNotesFromSubtask(subtaskList, path);
+    }
 }
