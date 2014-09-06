@@ -57,12 +57,7 @@ public class GenerateNote extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (radioButtonYes.isSelected()) {
-                System.out.println("YES");
-                saveParentDialog();
-            } else {
-                System.out.println("NO");
-            }
+            saveParentDialog();
         }
     }
 
@@ -80,16 +75,22 @@ public class GenerateNote extends JPanel {
     private void saveParentDialog() {
         JFileChooser c = new JFileChooser();
         int rVal = c.showSaveDialog(GenerateNote.this);
+
         if (rVal == JFileChooser.APPROVE_OPTION) {
             String filename = c.getSelectedFile().getName();
             String dir = c.getCurrentDirectory().toString();
 
             String path = dir + File.separator + filename;
-            generateScrumnote(path);
+            if (radioButtonYes.isSelected()) {
+                System.out.println("YES");
+                generateScrumnotesFromParent(path);
+            } else {
+                System.out.println("NO");
+            }
         }
     }
 
-    private void generateScrumnote(String path) {
+    private void generateScrumnotesFromParent(String path) {
         ScrumNotesStub stub = new ScrumNotesStub();
         simpleGeneratorService.createNotesFromSubtask(stub.getSubtasks(url.getText()), path);
     }
