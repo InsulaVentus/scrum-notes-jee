@@ -3,6 +3,7 @@
 out/*
 output/output-excel/target/*
 common/common-domain/target/*
+gui/gui-generate_note/target/*
 input/input-jira/target/*
 input/target/
 
