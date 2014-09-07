@@ -7,7 +7,7 @@
 
     <groupId>no.agricolas.scrumnotes.gui.generate_note</groupId>
     <artifactId>gui-generate_note</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <name>gui-generate_note</name>
     <description>Root pom for GENERATE_NOTE</description>
 
