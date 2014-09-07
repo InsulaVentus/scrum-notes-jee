@@ -18,8 +18,10 @@ public class SimpleJiraEntity {
     @JSONField("fields:issuetype:name")
     private String field3;
 
-    public SimpleJiraEntity() {
-
+    public SimpleJiraEntity(String field1, String field2, String field3) {
+        setField1(field1);
+        setField2(field2);
+        setField3(field3);
     }
 
     public String getField1() {
