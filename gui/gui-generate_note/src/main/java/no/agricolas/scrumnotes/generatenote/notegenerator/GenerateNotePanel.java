@@ -19,10 +19,6 @@ public class GenerateNotePanel extends JPanel {
     private JiraService jiraService = new SimpleJiraService();
     private GeneratorService generatorService = new SimpleGeneratorService();
 
-    private static final int GRID_WIDTH = 1;
-    private static final int GRID_HEIGHT = 6;
-
-
     private JButton btnSave = new JButton("Generate");
 
     private JTextField taskName = new JTextField();
@@ -35,21 +31,35 @@ public class GenerateNotePanel extends JPanel {
     private JRadioButton radioButtonNo;
 
     public GenerateNotePanel() {
-        setLayout(new GridLayout(2, 1));
-        add(new TopPanel(), BorderLayout.NORTH);
-        add(new ButtonPanel(), BorderLayout.CENTER);
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        add(new NoteGeneratorPanel());
+        add(new ButtonPanel());
+        add(new LoggingPanel());
     }
 
-    private class TopPanel extends JPanel {
-        public TopPanel() {
-            setLayout(new GridLayout(GRID_HEIGHT, GRID_WIDTH));
+    private class NoteGeneratorPanel extends JPanel {
+        public NoteGeneratorPanel() {
+            setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
-            add(urlLabel);
-            add(taskName);
-            add(parentLabel);
+            JPanel taskNamePane = new JPanel();
+            taskNamePane.setLayout(new BoxLayout(taskNamePane, BoxLayout.LINE_AXIS));
+            taskNamePane.add(urlLabel);
+            taskNamePane.add(Box.createRigidArea(new Dimension(10, 0)));
+            taskName.setColumns(40);
+            taskNamePane.add(taskName);
+            taskNamePane.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 50));
+
+            JPanel radioPane = new JPanel();
+            radioPane.setLayout(new BoxLayout(radioPane, BoxLayout.LINE_AXIS));
+
+            radioPane.add(parentLabel);
+            radioPane.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 440));
             createRadioGroup();
-            add(radioButtonYes);
-            add(radioButtonNo);
+            radioPane.add(radioButtonYes);
+            radioPane.add(radioButtonNo);
+
+            add(taskNamePane);
+            add(radioPane);
         }
     }
 
@@ -58,6 +68,7 @@ public class GenerateNotePanel extends JPanel {
             setLayout(new FlowLayout());
             btnSave.addActionListener(this);
             add(btnSave);
+            setBorder(BorderFactory.createEmptyBorder(0, 0, 190, 0));
         }
 
         @Override
@@ -93,6 +104,16 @@ public class GenerateNotePanel extends JPanel {
                 System.out.println("CHILD");
                 generateSingleSrumnoteFromChild();
             }
+        }
+    }
+
+    private class LoggingPanel extends JPanel {
+        public LoggingPanel() {
+            setLayout(new GridLayout(1, 1));
+
+            DefaultListModel listModel = new DefaultListModel();
+            JList logList = new JList(listModel);
+            add(new JScrollPane(logList));
         }
     }
 
