@@ -17,6 +17,7 @@ import java.io.File;
 import java.util.List;
 
 import static no.agricolas.scrumnotes.generatenote.notegenerator.utils.logging.LogMessages.NUMBER_OF_GENERATED_NOTES;
+import static no.agricolas.scrumnotes.generatenote.notegenerator.utils.logging.LogMessages.SAVE_DIR;
 import static no.agricolas.scrumnotes.generatenote.notegenerator.utils.logging.LogMessages.SEPARATOR;
 
 /**
@@ -31,15 +32,14 @@ public class GenerateNotePanel extends JPanel {
     private GeneratorService generatorService = new SimpleGeneratorService();
 
     private JButton btnSave = new JButton("Generate");
-
     private JTextField taskName = new JTextField();
-
     private JLabel urlLabel = new JLabel("Task name");
     private JLabel parentLabel = new JLabel("Parent task");
-
     private JRadioButton radioButtonYes;
-
     private JRadioButton radioButtonNo;
+
+    private String dir;
+    private String filename;
 
     public GenerateNotePanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -106,8 +106,8 @@ public class GenerateNotePanel extends JPanel {
         int rVal = fileChooser.showSaveDialog(GenerateNotePanel.this);
 
         if (rVal == JFileChooser.APPROVE_OPTION) {
-            String filename = fileChooser.getSelectedFile().getName();
-            String dir = fileChooser.getCurrentDirectory().toString();
+            filename = fileChooser.getSelectedFile().getName();
+            dir = fileChooser.getCurrentDirectory().toString();
 
             String path = dir + File.separator + filename;
             if (radioButtonYes.isSelected()) {
@@ -148,6 +148,7 @@ public class GenerateNotePanel extends JPanel {
         loggingListModel.addElement(taskTypeStatusList.get(0));
         loggingListModel.addElement(taskTypeStatusList.get(1));
         loggingListModel.addElement(taskTypeStatusList.get(2));
+        loggingListModel.addElement(String.format(SAVE_DIR, filename, dir));
         loggingListModel.addElement(SEPARATOR);
         logList.ensureIndexIsVisible(loggingListModel.size() - 1);
 

@@ -8,4 +8,5 @@ import org.apache.commons.lang3.StringUtils;
 public class LogMessages {
     public static final String SEPARATOR = StringUtils.rightPad("", 140, '-');
     public static final String NUMBER_OF_GENERATED_NOTES = "Generated %s subtasks from %s";
+    public static final String SAVE_DIR = "\"%s\" was saved at: %s";
 }
