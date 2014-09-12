@@ -1,5 +1,7 @@
 package no.agricolas.scrumnotes.generatenote;
 
+import no.agricolas.scrumnotes.generatenote.notegenerator.GenerateNotePanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -32,7 +34,7 @@ public class Main extends JFrame {
         private static final String TITLE_BURNDOWN = "Generate Burndown";
 
         public TabFrame() {
-            addTab(TITLE_NOTE, new GenerateNote());
+            addTab(TITLE_NOTE, new GenerateNotePanel());
             addTab(TITLE_BURNDOWN, new JPanel());
         }
     }

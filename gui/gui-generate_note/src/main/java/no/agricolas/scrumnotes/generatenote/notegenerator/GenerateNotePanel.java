@@ -1,5 +1,6 @@
-package no.agricolas.scrumnotes.generatenote;
+package no.agricolas.scrumnotes.generatenote.notegenerator;
 
+import no.agricolas.scrumnotes.generatenote.notegenerator.utils.ScrumNotesStub;
 import no.agricolas.scrumnotes.jira.service.JiraService;
 import no.agricolas.scrumnotes.jira.service.SimpleJiraService;
 import no.agricolas.srumnotes.common.GeneratorService;
@@ -14,7 +15,7 @@ import java.io.File;
 /**
  * @author Simen Søhol
  */
-public class GenerateNote extends JPanel {
+public class GenerateNotePanel extends JPanel {
     private JiraService jiraService = new SimpleJiraService();
     private GeneratorService generatorService = new SimpleGeneratorService();
 
@@ -33,7 +34,7 @@ public class GenerateNote extends JPanel {
 
     private JRadioButton radioButtonNo;
 
-    public GenerateNote() {
+    public GenerateNotePanel() {
         setLayout(new GridLayout(2, 1));
         add(new TopPanel(), BorderLayout.NORTH);
         add(new ButtonPanel(), BorderLayout.CENTER);
@@ -78,7 +79,7 @@ public class GenerateNote extends JPanel {
 
     private void saveParentDialog() {
         JFileChooser fileChooser = new JFileChooser();
-        int rVal = fileChooser.showSaveDialog(GenerateNote.this);
+        int rVal = fileChooser.showSaveDialog(GenerateNotePanel.this);
 
         if (rVal == JFileChooser.APPROVE_OPTION) {
             String filename = fileChooser.getSelectedFile().getName();
@@ -96,7 +97,7 @@ public class GenerateNote extends JPanel {
     }
 
     private void generateSingleSrumnoteFromChild() {
-        
+
     }
 
     private void generateScrumnotesFromParent(String path) {

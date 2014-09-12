@@ -1,4 +1,4 @@
-package no.agricolas.scrumnotes.generatenote;
+package no.agricolas.scrumnotes.generatenote.notegenerator.utils;
 
 import no.agricolas.scrumnotes.domain.SubtaskNote;
 import no.agricolas.scrumnotes.domain.SubtaskType;
