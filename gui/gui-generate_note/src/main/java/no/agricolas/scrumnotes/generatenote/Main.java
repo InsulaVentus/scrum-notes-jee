@@ -17,7 +17,7 @@ public class Main extends JFrame {
     private JButton btnExit = new JButton("Exit");
 
     public Main() {
-        setTitle("SRUMNOTES");
+        setTitle("SCRUMNOTES");
 
         add(new TabFrame(), BorderLayout.CENTER);
         add(new ButtonPanel(), BorderLayout.SOUTH);
