@@ -1,7 +1,7 @@
 package no.agricolas.scrumnotes.generatenote.notegenerator;
 
 import no.agricolas.scrumnotes.domain.SubtaskNote;
-import no.agricolas.scrumnotes.generatenote.notegenerator.utils.ScrumNotesLogger;
+import no.agricolas.scrumnotes.generatenote.notegenerator.utils.logging.ScrumNotesLogger;
 import no.agricolas.scrumnotes.generatenote.notegenerator.utils.ScrumNotesStub;
 import no.agricolas.scrumnotes.generatenote.notegenerator.utils.validator.TaskValidator;
 import no.agricolas.scrumnotes.jira.service.JiraService;
@@ -16,12 +16,16 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.List;
 
+import static no.agricolas.scrumnotes.generatenote.notegenerator.utils.logging.LogMessages.NUMBER_OF_GENERATED_NOTES;
+import static no.agricolas.scrumnotes.generatenote.notegenerator.utils.logging.LogMessages.SEPARATOR;
+
 /**
  * @author Simen Søhol
  */
 public class GenerateNotePanel extends JPanel {
     private JiraService jiraService = new SimpleJiraService();
     private TaskValidator taskValidator = new TaskValidator();
+    private JList<String> logList;
     private DefaultListModel<String> loggingListModel;
     private ScrumNotesLogger logger = new ScrumNotesLogger();
     private GeneratorService generatorService = new SimpleGeneratorService();
@@ -122,7 +126,7 @@ public class GenerateNotePanel extends JPanel {
 
             loggingListModel = new DefaultListModel<String>();
 
-            JList<String> logList = new JList<String>(loggingListModel);
+            logList = new JList<String>(loggingListModel);
             add(new JScrollPane(logList));
         }
     }
@@ -139,10 +143,13 @@ public class GenerateNotePanel extends JPanel {
         List<SubtaskNote> subtaskNoteList = stub.getSubtasks(taskName.getText());
         List<String> taskTypeStatusList = logger.getScrumnotesStats(subtaskNoteList);
 
-        loggingListModel.addElement("Generating " + subtaskNoteList.size() + " subtasks from " + subtaskNoteList.get(0).getParentTask());
+        loggingListModel.addElement(String.format(NUMBER_OF_GENERATED_NOTES, subtaskNoteList.size(), taskName.getText()));
+
         loggingListModel.addElement(taskTypeStatusList.get(0));
         loggingListModel.addElement(taskTypeStatusList.get(1));
         loggingListModel.addElement(taskTypeStatusList.get(2));
+        loggingListModel.addElement(SEPARATOR);
+        logList.ensureIndexIsVisible(loggingListModel.size() - 1);
 
         generatorService.createNotesFromSubtask(subtaskNoteList, path);
     }

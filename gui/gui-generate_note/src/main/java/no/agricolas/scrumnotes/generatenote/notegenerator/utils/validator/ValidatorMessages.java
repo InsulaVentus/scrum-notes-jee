@@ -1,5 +1,7 @@
 package no.agricolas.scrumnotes.generatenote.notegenerator.utils.validator;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @author Simen Søhol
  */

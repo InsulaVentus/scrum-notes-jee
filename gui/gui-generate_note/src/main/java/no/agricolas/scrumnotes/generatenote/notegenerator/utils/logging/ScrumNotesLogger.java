@@ -1,4 +1,4 @@
-package no.agricolas.scrumnotes.generatenote.notegenerator.utils;
+package no.agricolas.scrumnotes.generatenote.notegenerator.utils.logging;
 
 import no.agricolas.scrumnotes.domain.SubtaskNote;
 import no.agricolas.scrumnotes.domain.SubtaskType;
@@ -13,9 +13,9 @@ import static no.agricolas.scrumnotes.domain.SubtaskType.TESTING;
  * @author Simen Søhol
  */
 public class ScrumNotesLogger {
-    private static final String LOG_TOTAL_DEVELOPMENT = "Total generated developmenttasks: ";
-    private static final String LOG_TOTAL_TEST = "Total generated testtasks: ";
-    private static final String LOG_TOTAL_OTHER = "Total unspecified tasks generated: ";
+    private static final String LOG_TOTAL_DEVELOPMENT = "Total generated developmenttasks: %s";
+    private static final String LOG_TOTAL_TEST = "Total generated testtasks: %s";
+    private static final String LOG_TOTAL_OTHER = "Total unspecified tasks generated: %s";
 
     public List<String> getScrumnotesStats(List<SubtaskNote> subtaskNotes) {
         int developmentTasks = 0;
@@ -32,8 +32,8 @@ public class ScrumNotesLogger {
             }
         }
 
-        return Arrays.asList(LOG_TOTAL_DEVELOPMENT + developmentTasks,
-                LOG_TOTAL_TEST + testingTasks,
-                LOG_TOTAL_OTHER + otherTaskes);
+        return Arrays.asList(String.format(LOG_TOTAL_DEVELOPMENT, developmentTasks),
+                String.format(LOG_TOTAL_TEST, testingTasks),
+                String.format(LOG_TOTAL_OTHER, otherTaskes));
     }
 }
