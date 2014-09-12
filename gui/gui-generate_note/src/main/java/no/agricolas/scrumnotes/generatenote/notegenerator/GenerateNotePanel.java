@@ -1,6 +1,8 @@
 package no.agricolas.scrumnotes.generatenote.notegenerator;
 
+import no.agricolas.scrumnotes.domain.SubtaskNote;
 import no.agricolas.scrumnotes.generatenote.notegenerator.utils.ScrumNotesStub;
+import no.agricolas.scrumnotes.generatenote.notegenerator.utils.validator.TaskValidator;
 import no.agricolas.scrumnotes.jira.service.JiraService;
 import no.agricolas.scrumnotes.jira.service.SimpleJiraService;
 import no.agricolas.srumnotes.common.GeneratorService;
@@ -11,12 +13,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.List;
 
 /**
  * @author Simen Søhol
  */
 public class GenerateNotePanel extends JPanel {
     private JiraService jiraService = new SimpleJiraService();
+    private TaskValidator taskValidator = new TaskValidator();
+    private DefaultListModel<String> loggingListModel;
     private GeneratorService generatorService = new SimpleGeneratorService();
 
     private JButton btnSave = new JButton("Generate");
@@ -73,7 +78,9 @@ public class GenerateNotePanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            saveParentDialog();
+            if (taskValidator.validateTask(taskName.getText())) {
+                saveParentDialog();
+            }
         }
     }
 
@@ -111,8 +118,9 @@ public class GenerateNotePanel extends JPanel {
         public LoggingPanel() {
             setLayout(new GridLayout(1, 1));
 
-            DefaultListModel listModel = new DefaultListModel();
-            JList logList = new JList(listModel);
+            loggingListModel = new DefaultListModel<String>();
+
+            JList<String> logList = new JList<String>(loggingListModel);
             add(new JScrollPane(logList));
         }
     }
@@ -126,6 +134,10 @@ public class GenerateNotePanel extends JPanel {
 
         //simpleGeneratorService.createNotesFromSubtask(jiraService.getSubIssues(taskName.getText()), path);
 
-        generatorService.createNotesFromSubtask(stub.getSubtasks(taskName.getText()), path);
+        List<SubtaskNote> subtaskNoteList = stub.getSubtasks(taskName.getText());
+
+        loggingListModel.addElement("Generating " + subtaskNoteList.size() + " subtasks from " + subtaskNoteList.get(0).getParentTask());
+
+        generatorService.createNotesFromSubtask(subtaskNoteList, path);
     }
 }
