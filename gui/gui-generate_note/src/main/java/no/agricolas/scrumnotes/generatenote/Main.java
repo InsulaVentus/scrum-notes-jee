@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  */
 public class Main extends JFrame {
     private static final int JFRAME_WIDTH_SIZE = 600;
-    private static final int JFRAME_HEIGHT_SIZE = 500;
+    private static final int JFRAME_HEIGHT_SIZE = 350;
 
     private JButton btnExit = new JButton("Exit");
 

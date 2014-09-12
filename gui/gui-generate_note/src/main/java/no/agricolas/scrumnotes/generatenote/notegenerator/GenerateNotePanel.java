@@ -16,9 +16,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.List;
 
-import static no.agricolas.scrumnotes.generatenote.notegenerator.utils.logging.LogMessages.NUMBER_OF_GENERATED_NOTES;
-import static no.agricolas.scrumnotes.generatenote.notegenerator.utils.logging.LogMessages.SAVE_DIR;
-import static no.agricolas.scrumnotes.generatenote.notegenerator.utils.logging.LogMessages.SEPARATOR;
+import static no.agricolas.scrumnotes.generatenote.notegenerator.utils.logging.LogMessages.*;
 
 /**
  * @author Simen Søhol
@@ -79,7 +77,7 @@ public class GenerateNotePanel extends JPanel {
             setLayout(new FlowLayout());
             btnSave.addActionListener(this);
             add(btnSave);
-            setBorder(BorderFactory.createEmptyBorder(0, 0, 190, 0));
+            setBorder(BorderFactory.createEmptyBorder(0, 0, 40, 0));
         }
 
         @Override
@@ -125,14 +123,23 @@ public class GenerateNotePanel extends JPanel {
             setLayout(new GridLayout(1, 1));
 
             loggingListModel = new DefaultListModel<String>();
+            loggingListModel.addElement(LOG_SEPARATOR);
+            loggingListModel.addElement(LOG_DEFAULT_START_MESSAGE);
+            loggingListModel.addElement(LOG_SEPARATOR);
+            loggingListModel.addElement(LOG_EMPTY);
 
             logList = new JList<String>(loggingListModel);
+            logList.setEnabled(false);
+
             add(new JScrollPane(logList));
         }
     }
 
     private void generateSingleSrumnoteFromChild() {
-
+        loggingListModel.addElement(String.format(LOG_GENERATED_SINGLE_NOTE, taskName.getText()));
+        loggingListModel.addElement(String.format(LOG_SAVE_DIR, filename, dir));
+        loggingListModel.addElement(LOG_SEPARATOR);
+        logList.ensureIndexIsVisible(loggingListModel.size() - 1);
     }
 
     private void generateScrumnotesFromParent(String path) {
@@ -143,13 +150,13 @@ public class GenerateNotePanel extends JPanel {
         List<SubtaskNote> subtaskNoteList = stub.getSubtasks(taskName.getText());
         List<String> taskTypeStatusList = logger.getScrumnotesStats(subtaskNoteList);
 
-        loggingListModel.addElement(String.format(NUMBER_OF_GENERATED_NOTES, subtaskNoteList.size(), taskName.getText()));
+        loggingListModel.addElement(String.format(LOG_NUMBER_OF_GENERATED_NOTES, taskName.getText(), subtaskNoteList.size()));
 
         loggingListModel.addElement(taskTypeStatusList.get(0));
         loggingListModel.addElement(taskTypeStatusList.get(1));
         loggingListModel.addElement(taskTypeStatusList.get(2));
-        loggingListModel.addElement(String.format(SAVE_DIR, filename, dir));
-        loggingListModel.addElement(SEPARATOR);
+        loggingListModel.addElement(String.format(LOG_SAVE_DIR, filename, dir));
+        loggingListModel.addElement(LOG_SEPARATOR);
         logList.ensureIndexIsVisible(loggingListModel.size() - 1);
 
         generatorService.createNotesFromSubtask(subtaskNoteList, path);
