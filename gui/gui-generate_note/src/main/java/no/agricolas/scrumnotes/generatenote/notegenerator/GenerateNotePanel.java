@@ -1,6 +1,7 @@
 package no.agricolas.scrumnotes.generatenote.notegenerator;
 
 import no.agricolas.scrumnotes.domain.SubtaskNote;
+import no.agricolas.scrumnotes.generatenote.notegenerator.utils.ScrumNotesLogger;
 import no.agricolas.scrumnotes.generatenote.notegenerator.utils.ScrumNotesStub;
 import no.agricolas.scrumnotes.generatenote.notegenerator.utils.validator.TaskValidator;
 import no.agricolas.scrumnotes.jira.service.JiraService;
@@ -22,6 +23,7 @@ public class GenerateNotePanel extends JPanel {
     private JiraService jiraService = new SimpleJiraService();
     private TaskValidator taskValidator = new TaskValidator();
     private DefaultListModel<String> loggingListModel;
+    private ScrumNotesLogger logger = new ScrumNotesLogger();
     private GeneratorService generatorService = new SimpleGeneratorService();
 
     private JButton btnSave = new JButton("Generate");
@@ -135,8 +137,12 @@ public class GenerateNotePanel extends JPanel {
         //simpleGeneratorService.createNotesFromSubtask(jiraService.getSubIssues(taskName.getText()), path);
 
         List<SubtaskNote> subtaskNoteList = stub.getSubtasks(taskName.getText());
+        List<String> taskTypeStatusList = logger.getScrumnotesStats(subtaskNoteList);
 
         loggingListModel.addElement("Generating " + subtaskNoteList.size() + " subtasks from " + subtaskNoteList.get(0).getParentTask());
+        loggingListModel.addElement(taskTypeStatusList.get(0));
+        loggingListModel.addElement(taskTypeStatusList.get(1));
+        loggingListModel.addElement(taskTypeStatusList.get(2));
 
         generatorService.createNotesFromSubtask(subtaskNoteList, path);
     }
