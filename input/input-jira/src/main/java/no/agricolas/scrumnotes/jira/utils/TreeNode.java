@@ -78,11 +78,14 @@ public class TreeNode<N> {
         return target;
     }
 
+    public boolean hasChildren() {
+        return !getChildren().isEmpty();
+    }
+
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
                 .append(content)
-                .append(target)
                 .toHashCode();
     }
 
@@ -98,7 +101,6 @@ public class TreeNode<N> {
             final TreeNode treeNode = (TreeNode) object;
             return new EqualsBuilder()
                     .append(content, treeNode.content)
-                    .append(target, treeNode.target)
                     .isEquals();
         }
         return true;
