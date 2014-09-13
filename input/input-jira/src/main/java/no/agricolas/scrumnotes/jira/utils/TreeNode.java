@@ -17,13 +17,16 @@ public class TreeNode<N> {
 
     private N content;
 
-    public TreeNode() {
-        this(null);
-    }
+    private boolean target;
 
     public TreeNode(N content) {
-        this.content = content;
-        this.children = new HashMap<TreeNode<N>, TreeNode<N>>();
+        this(content, false);
+    }
+
+    public TreeNode(N content, boolean target) {
+        setContent(content);
+        setTarget(target);
+        setChildren(new HashMap<TreeNode<N>, TreeNode<N>>());
     }
 
     public TreeNode<N> getRootNode() {
@@ -59,14 +62,27 @@ public class TreeNode<N> {
         this.content = content;
     }
 
+    public void setChildren(Map<TreeNode<N>, TreeNode<N>> children) {
+        this.children = children;
+    }
+
     public Map<TreeNode<N>, TreeNode<N>> getChildren() {
         return children;
+    }
+
+    public void setTarget(boolean target) {
+        this.target = target;
+    }
+
+    public boolean isTarget() {
+        return target;
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
                 .append(content)
+                .append(target)
                 .toHashCode();
     }
 
@@ -82,6 +98,7 @@ public class TreeNode<N> {
             final TreeNode treeNode = (TreeNode) object;
             return new EqualsBuilder()
                     .append(content, treeNode.content)
+                    .append(target, treeNode.target)
                     .isEquals();
         }
         return true;

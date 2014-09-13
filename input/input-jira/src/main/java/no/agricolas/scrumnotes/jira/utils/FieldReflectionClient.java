@@ -5,6 +5,8 @@ import no.agricolas.scrumnotes.domain.JSONField;
 
 import java.lang.reflect.Field;
 
+import static java.lang.String.format;
+
 /**
  * @author Øyvind Strømmen
  */
@@ -16,7 +18,7 @@ public class FieldReflectionClient {
     public <T> TreeNode<String> extractFields(Class<T> clazz) {
         JSONBase jsonBase = clazz.getAnnotation(JSONBase.class);
         if (jsonBase == null) {
-            throw new RuntimeException(String.format(MSG_MISSING_BASE_ANNOTATION, clazz.getName()));
+            throw new RuntimeException(format(MSG_MISSING_BASE_ANNOTATION, clazz.getName()));
         }
         String base = jsonBase.value();
         TreeNode<String> treeRoot = new TreeNode<String>(base);
@@ -34,18 +36,22 @@ public class FieldReflectionClient {
         }
 
         if (Boolean.FALSE.equals(validJsonFieldFound)) {
-            throw new RuntimeException(String.format(MSG_MISSING_VALID_FIELD_ANNOTATION, clazz.getName()));
+            throw new RuntimeException(format(MSG_MISSING_VALID_FIELD_ANNOTATION, clazz.getName()));
         }
         return treeRoot;
     }
 
     private void populateTree(TreeNode<String> node, String pathString) {
         String[] path = pathString.split(":");
+        int pathLength = path.length;
+        int lastElement = pathLength - 1;
 
         TreeNode<String> currentNode = node;
 
-        for (String string : path) {
-            TreeNode<String> newNode = new TreeNode<String>(string);
+        for (int i = 0; i < pathLength; i++) {
+            String string = path[i];
+            TreeNode<String> newNode = new TreeNode<String>(string, i == lastElement);
+
             if (currentNode.addChild(newNode)) {
                 currentNode = newNode;
             } else {
