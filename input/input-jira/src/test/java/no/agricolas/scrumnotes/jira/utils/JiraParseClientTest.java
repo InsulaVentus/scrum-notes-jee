@@ -28,6 +28,8 @@ public class JiraParseClientTest {
     @Mock
     private FieldReflectionClient reflectionClient;
 
+    private static final boolean TARGET = true;
+
     private static final String ACTUAL = "/actual-result.json";
     private static final String IDEAL = "/ideal-result.json";
     private static final String MAX_ONE = "/max-one-result.json";
@@ -47,7 +49,10 @@ public class JiraParseClientTest {
                 new SimpleJiraEntity("PKDRAGE-1346", "Leverandørtest - Testsammendrag", "Testsammendrag"),
                 new SimpleJiraEntity("PKDRAGE-1345", "Leverandørtest - Testplanlegging", "Testplanlegging")
         );
-        assertEquals(excpectedList, parseClient.getIssues(createInputStream(ACTUAL), SimpleJiraEntity.class));
+
+        List<SimpleJiraEntity> list = parseClient.getElements(createInputStream(ACTUAL), SimpleJiraEntity.class);
+
+        assertEquals(excpectedList, parseClient.getElements(createInputStream(ACTUAL), SimpleJiraEntity.class));
     }
 
     private InputStream createInputStream(String fileName) throws FileNotFoundException {
@@ -60,11 +65,11 @@ public class JiraParseClientTest {
 
     private TreeNode<String> createSimpleJiraEntitySearchTree() {
         TreeNode<String> issues = new TreeNode<String>("issues");
-        TreeNode<String> key = new TreeNode<String>("key");
+        TreeNode<String> key = new TreeNode<String>("key", TARGET);
         TreeNode<String> fields = new TreeNode<String>("fields");
-        TreeNode<String> summary = new TreeNode<String>("summary");
+        TreeNode<String> summary = new TreeNode<String>("summary", TARGET);
         TreeNode<String> issuetype = new TreeNode<String>("issuetype");
-        TreeNode<String> name = new TreeNode<String>("name");
+        TreeNode<String> name = new TreeNode<String>("name", TARGET);
 
         issues.addChild(key);
         issues.addChild(fields);
