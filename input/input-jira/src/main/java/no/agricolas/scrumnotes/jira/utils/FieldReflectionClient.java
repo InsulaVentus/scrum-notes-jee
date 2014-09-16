@@ -31,7 +31,7 @@ public class FieldReflectionClient {
             validJsonFieldFound = value != null ? Boolean.TRUE : null;
 
             if (value != null) {
-                populateTree(treeRoot, value);
+                populateTree(treeRoot, value, field.getName());
             }
         }
 
@@ -41,16 +41,22 @@ public class FieldReflectionClient {
         return treeRoot;
     }
 
-    private void populateTree(TreeNode<String> node, String pathString) {
+    private void populateTree(TreeNode<String> node, String pathString, String fieldName) {
         String[] path = pathString.split(":");
         int pathLength = path.length;
         int lastElement = pathLength - 1;
+        boolean isLastElement;
 
         TreeNode<String> currentNode = node;
 
         for (int i = 0; i < pathLength; i++) {
             String string = path[i];
-            TreeNode<String> newNode = new TreeNode<String>(string, i == lastElement);
+            isLastElement = i == lastElement;
+            TreeNode<String> newNode = new TreeNode<String>(string, isLastElement);
+
+            if (isLastElement) {
+                newNode.setFieldName(fieldName);
+            }
 
             if (currentNode.addChild(newNode)) {
                 currentNode = newNode;

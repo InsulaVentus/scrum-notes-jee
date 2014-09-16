@@ -19,13 +19,20 @@ public class TreeNode<N> {
 
     private boolean target;
 
+    private String fieldName;
+
     public TreeNode(N content) {
         this(content, false);
     }
 
     public TreeNode(N content, boolean target) {
+        this(content, target, null);
+    }
+
+    public TreeNode(N content, boolean target, String fieldName) {
         setContent(content);
         setTarget(target);
+        setFieldName(fieldName);
         setChildren(new HashMap<TreeNode<N>, TreeNode<N>>());
     }
 
@@ -78,6 +85,14 @@ public class TreeNode<N> {
         return target;
     }
 
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
+    }
+
+    public String getFieldName() {
+        return fieldName;
+    }
+
     public boolean hasChildren() {
         return !getChildren().isEmpty();
     }
@@ -86,6 +101,8 @@ public class TreeNode<N> {
     public int hashCode() {
         return new HashCodeBuilder()
                 .append(content)
+                .append(target)
+                .append(fieldName)
                 .toHashCode();
     }
 
@@ -101,6 +118,8 @@ public class TreeNode<N> {
             final TreeNode treeNode = (TreeNode) object;
             return new EqualsBuilder()
                     .append(content, treeNode.content)
+                    .append(target, treeNode.target)
+                    .append(fieldName, treeNode.fieldName)
                     .isEquals();
         }
         return true;

@@ -49,9 +49,6 @@ public class JiraParseClientTest {
                 new SimpleJiraEntity("PKDRAGE-1346", "Leverandørtest - Testsammendrag", "Testsammendrag"),
                 new SimpleJiraEntity("PKDRAGE-1345", "Leverandørtest - Testplanlegging", "Testplanlegging")
         );
-
-        List<SimpleJiraEntity> list = parseClient.getElements(createInputStream(ACTUAL), SimpleJiraEntity.class);
-
         assertEquals(excpectedList, parseClient.getElements(createInputStream(ACTUAL), SimpleJiraEntity.class));
     }
 
@@ -65,11 +62,11 @@ public class JiraParseClientTest {
 
     private TreeNode<String> createSimpleJiraEntitySearchTree() {
         TreeNode<String> issues = new TreeNode<String>("issues");
-        TreeNode<String> key = new TreeNode<String>("key", TARGET);
+        TreeNode<String> key = new TreeNode<String>("key", TARGET, "field1");
         TreeNode<String> fields = new TreeNode<String>("fields");
-        TreeNode<String> summary = new TreeNode<String>("summary", TARGET);
+        TreeNode<String> summary = new TreeNode<String>("summary", TARGET, "field2");
         TreeNode<String> issuetype = new TreeNode<String>("issuetype");
-        TreeNode<String> name = new TreeNode<String>("name", TARGET);
+        TreeNode<String> name = new TreeNode<String>("name", TARGET, "field3");
 
         issues.addChild(key);
         issues.addChild(fields);

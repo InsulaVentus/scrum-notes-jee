@@ -25,6 +25,8 @@ public class JiraParseClient<T> {
 
     private Class<T> clazz;
 
+    private String objectIdentifierKey;
+
     public JiraParseClient() {
         this.elements = new ArrayList<T>();
     }
@@ -46,66 +48,86 @@ public class JiraParseClient<T> {
                 case KEY_NAME:
                     baseIsFound = baseName.equals(parser.getString());
                     break;
-                case START_OBJECT:
-                    baseIsFound = createObjectInstanceIfBaseIsFound(baseIsFound, topNode);
-                    break;
                 case START_ARRAY:
-                    baseIsFound = createObjectInstanceIfBaseIsFound(baseIsFound, topNode);
+                    if (baseIsFound) {
+                        createObjectInstance(topNode);
+                    }
                     break;
             }
         }
         return elements;
     }
 
-    private boolean createObjectInstanceIfBaseIsFound(boolean baseIsFound, TreeNode<String> topNode) {
-        if (baseIsFound) {
-            try {
-                T instance = clazz.newInstance();
-                traverse(topNode.getChildren(), instance);
-                elements.add(instance);
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        return false;
+    private void createObjectInstance(TreeNode<String> topNode) {
+        createObjectInstance(topNode, false);
     }
 
+    private void createObjectInstance(TreeNode<String> topNode, boolean firstObject) {
+        if (firstObject) {
+            findObjectIdentifierKey();
+        }
+
+        try {
+            T instance = clazz.newInstance();
+            traverse(topNode.getChildren(), instance);
+            elements.add(instance);
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void findObjectIdentifierKey() {
+        while (parser.hasNext()) {
+            Event event = parser.next();
+            if (event.equals(Event.KEY_NAME)) {
+                setObjectIdentifierKey(parser.getString());
+                return;
+            }
+        }
+    }
+
+    /**
+     * TODO: Consider adding a check for <code>isTarget && hasChildren()</code> if support for arrays and or objects is desired
+     */
     private void traverse(Map<TreeNode<String>, TreeNode<String>> children, T instance) {
         Map<TreeNode<String>, TreeNode<String>> copy = new HashMap<TreeNode<String>, TreeNode<String>>(children);
 
+
         while (parser.hasNext() && !copy.isEmpty()) { //Loop through children until we find them all
+
             Event event = parser.next();
 
-            switch (event) {
-                case KEY_NAME:
-                    String fieldKey = parser.getString();
-                    TreeNode<String> node = copy.remove(new TreeNode<String>(fieldKey));
-
-                    if (node != null) {
-                        if (node.isTarget() && node.hasChildren()) { //TODO: Consider removing this
-                            addTargetToObjectInstance(instance, fieldKey);
-                            traverse(node.getChildren(), instance);
-                        } else if (node.isTarget()) {
-                            addTargetToObjectInstance(instance, fieldKey);
-                        } else {
-                            traverse(node.getChildren(), instance);
-                        }
+            if (event.equals(Event.KEY_NAME)) {
+                TreeNode<String> node = removeElementBasedOnContent(copy, parser.getString());
+                if (node != null) {
+                    if (node.isTarget()) {
+                        addTargetToObjectInstance(instance, node);
+                    } else {
+                        traverse(node.getChildren(), instance);
                     }
-                    break;
+                }
             }
         }
     }
 
-    private void addTargetToObjectInstance(T instance, String fieldKey) {
+    private TreeNode<String> removeElementBasedOnContent(Map<TreeNode<String>, TreeNode<String>> map, String fieldKey) {
+        for (Map.Entry<TreeNode<String>, TreeNode<String>> entry : map.entrySet()) {
+            TreeNode<String> key = entry.getKey();
+            if (key.getContent().equals(fieldKey)) {
+                return map.remove(key);
+            }
+        }
+        return null;
+    }
+
+    private void addTargetToObjectInstance(T instance, TreeNode<String> node) {
         parser.next();
         try {
-            Field field = instance.getClass().getDeclaredField(fieldKey); //TODO: Find based on annotation, not field name
-
-
+            Field field = instance.getClass().getDeclaredField(node.getFieldName());
+            field.setAccessible(true);
             field.set(instance, parser.getString());
-
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -119,5 +141,13 @@ public class JiraParseClient<T> {
 
     public void setClazz(Class<T> clazz) {
         this.clazz = clazz;
+    }
+
+    public void setObjectIdentifierKey(String objectIdentifierKey) {
+        this.objectIdentifierKey = objectIdentifierKey;
+    }
+
+    public String getObjectIdentifierKey() {
+        return objectIdentifierKey;
     }
 }
