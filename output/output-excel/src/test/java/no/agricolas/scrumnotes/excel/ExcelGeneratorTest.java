@@ -27,13 +27,17 @@ public class ExcelGeneratorTest {
     public void generateSingleNoteFromList() {
         List<SubtaskNote> subtaskNoteList = new ArrayList<SubtaskNote>();
 
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 5; i++) {
             SubtaskNote subtaskNoteUtvikling = buildSubtask(i, SubtaskType.DEVELOPMENT);
-            SubtaskNote subtaskNoteTest = buildSubtask(i * 10, SubtaskType.TESTING);
-            SubtaskNote subtaskNoteAnnet = buildSubtask(i * 20, SubtaskType.OTHER);
+            SubtaskNote subtaskNoteTest = buildSubtask(i * 13, SubtaskType.TESTING);
+            SubtaskNote subtaskNoteAnnet = buildSubtask(i * 17, SubtaskType.OTHER);
+            SubtaskNote subtaskNoteSysDoc = buildSubtask(i * 22, SubtaskType.DOCUMENTATION);
+            SubtaskNote subtaskNoteError = buildSubtask(i * 23, SubtaskType.ERROR);
             subtaskNoteList.add(subtaskNoteUtvikling);
             subtaskNoteList.add(subtaskNoteTest);
             subtaskNoteList.add(subtaskNoteAnnet);
+            subtaskNoteList.add(subtaskNoteSysDoc);
+            subtaskNoteList.add(subtaskNoteError);
         }
 
         boolean generatedExcelFile = excelGenerator.createNotesFromSubtask(subtaskNoteList, "Note");
@@ -42,8 +46,8 @@ public class ExcelGeneratorTest {
     }
 
     private SubtaskNote buildSubtask(int i, SubtaskType subtaskType) {
-        SubtaskNote subtaskNote = new SubtaskNote("PKKU-" + i, "PKKU-" + i + "00",
-                "PK-1234" + i + ": This is a subtak number" + i, i + ".5",
+        SubtaskNote subtaskNote = new SubtaskNote("PKKOALA-" + i*1000, "PKKU-" + i + "00",
+                "PK-1234" + i + ": This is subtak number " + i, i + ".5",
                 subtaskType);
 
         return subtaskNote;
