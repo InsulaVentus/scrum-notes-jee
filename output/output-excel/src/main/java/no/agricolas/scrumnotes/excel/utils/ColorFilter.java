@@ -35,7 +35,15 @@ public class ColorFilter {
                 Colour.LIGHT_ORANGE,
                 Colour.PINK,
                 Colour.PINK2,
-                Colour.BROWN
+                Colour.BROWN,
+                Colour.AUTOMATIC,
+                Colour.GRAY_25,
+                Colour.GRAY_50,
+                Colour.GRAY_80,
+                Colour.BRIGHT_GREEN,
+                Colour.WHITE,
+                Colour.INDIGO,
+                Colour.RED
         );
     }
 }
