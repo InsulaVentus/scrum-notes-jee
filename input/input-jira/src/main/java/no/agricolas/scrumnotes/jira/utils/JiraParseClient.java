@@ -41,25 +41,23 @@ public class JiraParseClient<T> {
 
         String baseName = topNode.getContent().toLowerCase();
 
-        boolean baseIsFound = false;
+        boolean lookingForBase = true;
         while (parser.hasNext()) {
             Event event = parser.next();
-            switch (event) {
-                case KEY_NAME:
-                    baseIsFound = baseName.equals(parser.getString());
-                    break;
-                case START_ARRAY:
-                    if (baseIsFound) {
-                        createObjectInstance(topNode);
-                    }
-                    break;
+            
+            if (event.equals(Event.KEY_NAME)) {
+
+                String keyName = parser.getString();
+                if (lookingForBase && baseName.equals(keyName)) {
+                    createObjectInstance(topNode, true);
+                    lookingForBase = false;
+                } else if (objectIdentifierKey != null && keyName.equals(objectIdentifierKey)) {
+                    createObjectInstance(topNode, false);
+                }
+
             }
         }
         return elements;
-    }
-
-    private void createObjectInstance(TreeNode<String> topNode) {
-        createObjectInstance(topNode, false);
     }
 
     private void createObjectInstance(TreeNode<String> topNode, boolean firstObject) {
@@ -93,7 +91,6 @@ public class JiraParseClient<T> {
      */
     private void traverse(Map<TreeNode<String>, TreeNode<String>> children, T instance) {
         Map<TreeNode<String>, TreeNode<String>> copy = new HashMap<TreeNode<String>, TreeNode<String>>(children);
-
 
         while (parser.hasNext() && !copy.isEmpty()) { //Loop through children until we find them all
 
@@ -145,9 +142,5 @@ public class JiraParseClient<T> {
 
     public void setObjectIdentifierKey(String objectIdentifierKey) {
         this.objectIdentifierKey = objectIdentifierKey;
-    }
-
-    public String getObjectIdentifierKey() {
-        return objectIdentifierKey;
     }
 }

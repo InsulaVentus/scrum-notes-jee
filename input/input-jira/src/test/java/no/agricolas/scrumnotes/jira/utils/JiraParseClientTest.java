@@ -2,7 +2,6 @@ package no.agricolas.scrumnotes.jira.utils;
 
 import no.agricolas.scrumnotes.jira.utils.mock_entities.SimpleJiraEntity;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -40,7 +39,6 @@ public class JiraParseClientTest {
         initMocks(this);
     }
 
-    @Ignore
     @Test
     public void threeTasksReturnedWhenActualAndSimpleJiraEntity() throws Exception {
         mockReflectionClient(createSimpleJiraEntitySearchTree());

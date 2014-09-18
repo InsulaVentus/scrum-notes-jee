@@ -40,7 +40,7 @@
                         "32x32": "http://jira.adeo.no/secure/useravatar?size=medium&ownerId=s139901&avatarId=13898",
                         "48x48": "http://jira.adeo.no/secure/useravatar?ownerId=s139901&avatarId=13898"
                     },
-                    "displayName": "Str�mmen, �yvind",
+                    "displayName": "Str?mmen, ?yvind",
                     "active": true
                 },
                 "customfield_13610": null,
@@ -86,7 +86,7 @@
                     "key": "PKDRAGE-1334",
                     "self": "http://jira.adeo.no/rest/api/2/issue/208474",
                     "fields": {
-                        "summary": "PK-5589: Nye krav�rsaker for klage og ankebehandling",
+                        "summary": "PK-5589: Nye krav?rsaker for klage og ankebehandling",
                         "status": {
                             "self": "http://jira.adeo.no/rest/api/2/status/10027",
                             "description": "Behovet er til systemtest [prosjekt]",
@@ -146,7 +146,7 @@
                     "projectCategory": {
                         "self": "http://jira.adeo.no/rest/api/2/projectCategory/10290",
                         "id": "10290",
-                        "name": "IKT Produktk�"
+                        "name": "IKT Produktk?"
                     }
                 },
                 "customfield_14212": null,
@@ -234,7 +234,7 @@
                         "32x32": "http://jira.adeo.no/secure/useravatar?size=medium&ownerId=s139901&avatarId=13898",
                         "48x48": "http://jira.adeo.no/secure/useravatar?ownerId=s139901&avatarId=13898"
                     },
-                    "displayName": "Str�mmen, �yvind",
+                    "displayName": "Str?mmen, ?yvind",
                     "active": true
                 },
                 "customfield_13510": null,
@@ -259,7 +259,7 @@
                     "total": 5400,
                     "percent": 100
                 },
-                "summary": "Leverand�rtest - Testsammendrag",
+                "summary": "Leverandørtest - Testsammendrag",
                 "customfield_10084": null,
                 "customfield_12215": null,
                 "issuetype": {
@@ -284,7 +284,7 @@
                         "32x32": "http://jira.adeo.no/secure/useravatar?size=medium&ownerId=s139901&avatarId=13898",
                         "48x48": "http://jira.adeo.no/secure/useravatar?ownerId=s139901&avatarId=13898"
                     },
-                    "displayName": "Str�mmen, �yvind",
+                    "displayName": "Str?mmen, ?yvind",
                     "active": true
                 },
                 "customfield_13610": null,
@@ -329,7 +329,7 @@
                     "key": "PKDRAGE-1334",
                     "self": "http://jira.adeo.no/rest/api/2/issue/208474",
                     "fields": {
-                        "summary": "PK-5589: Nye krav�rsaker for klage og ankebehandling",
+                        "summary": "PK-5589: Nye krav?rsaker for klage og ankebehandling",
                         "status": {
                             "self": "http://jira.adeo.no/rest/api/2/status/10027",
                             "description": "Behovet er til systemtest [prosjekt]",
@@ -384,7 +384,7 @@
                     "projectCategory": {
                         "self": "http://jira.adeo.no/rest/api/2/projectCategory/10290",
                         "id": "10290",
-                        "name": "IKT Produktk�"
+                        "name": "IKT Produktk?"
                     }
                 },
                 "customfield_14212": null,
@@ -466,7 +466,7 @@
                 "customfield_12917": null,
                 "customfield_10912": null,
                 "customfield_12919": null,
-                "customfield_12914": "Det ble ikke brukt klokkeskrudd milj� til testing, fordi det ikke var n�dvendig. Systemdato som er dagen da switchen skal inntreffe er samme dag som produksjonssettingsdato for denne leveransen. Det vil alts� aldri v�re en periode der man kan velge \"klage/anke\" som krav�rsak n�r l�sningen er prodsatt. Dermed s� ble det besluttet � fjerne \"klage/anke\" allerede n� uten � innf�re en systemdato-switch. Dette p�virker ogs� videre behandling p� en sak som hadde \"klage/anke\" som krav�rsak, her vil det m�tte velges en �rsak fra nedtrekkslisten for � fortsette.\r\n\r\n",
+                "customfield_12914": "Det ble ikke brukt klokkeskrudd milj? til testing, fordi det ikke var n?dvendig. Systemdato som er dagen da switchen skal inntreffe er samme dag som produksjonssettingsdato for denne leveransen. Det vil alts? aldri v?re en periode der man kan velge \"klage/anke\" som krav?rsak n?r l?sningen er prodsatt. Dermed s? ble det besluttet ? fjerne \"klage/anke\" allerede n? uten ? innf?re en systemdato-switch. Dette p?virker ogs? videre behandling p? en sak som hadde \"klage/anke\" som krav?rsak, her vil det m?tte velges en ?rsak fra nedtrekkslisten for ? fortsette.\r\n\r\n",
                 "assignee": {
                     "self": "http://jira.adeo.no/rest/api/2/user?username=T142989",
                     "name": "T142989",
@@ -480,12 +480,12 @@
                     "displayName": "Thiruchelvam, Mayurathan",
                     "active": true
                 },
-                "customfield_12913": "Testet alle nedtrekkslister mappet mot sakstyper - b�de for kravtype \"klage\" og for kravtype \"anke\".\r\n\r\nTestet at n�r et eldre krav med kravtype klage eller anke - som ikke har blitt ferdigbehandlet skal behandles s� m� saksbehandler velge �rsak for � fortsette. Dette selv om \"klage/anke\" ble valgt som �rsak tidligere.\r\n\r\nI tillegg s� ble mapping verifisert i forbindelse med krav�rsaker introdusert i PK-6722 som skulle bli hensyntatt i denne l�sningen.\r\n\r\n",
+                "customfield_12913": "Testet alle nedtrekkslister mappet mot sakstyper - b?de for kravtype \"klage\" og for kravtype \"anke\".\r\n\r\nTestet at n?r et eldre krav med kravtype klage eller anke - som ikke har blitt ferdigbehandlet skal behandles s? m? saksbehandler velge ?rsak for ? fortsette. Dette selv om \"klage/anke\" ble valgt som ?rsak tidligere.\r\n\r\nI tillegg s? ble mapping verifisert i forbindelse med krav?rsaker introdusert i PK-6722 som skulle bli hensyntatt i denne l?sningen.\r\n\r\n",
                 "customfield_12916": null,
-                "customfield_12915": "Det kan hende at denne endringen kan forstyrre videre testing av omr�der som ber�rer Klage og/eller Anke - da delen med systemdato ikke ble hensyntatt i leveransen vil \"klage/anke\" forsvinne som krav�rsak i UFR4-milj�ene, samt at saksbehandler m� endre krav�rsak p� ikke ferdig-behandlede krav.",
+                "customfield_12915": "Det kan hende at denne endringen kan forstyrre videre testing av omr?der som ber?rer Klage og/eller Anke - da delen med systemdato ikke ble hensyntatt i leveransen vil \"klage/anke\" forsvinne som krav?rsak i UFR4-milj?ene, samt at saksbehandler m? endre krav?rsak p? ikke ferdig-behandlede krav.",
                 "customfield_12912": {
                     "self": "http://jira.adeo.no/rest/api/2/customFieldOption/14710",
-                    "value": "Gr�nn",
+                    "value": "Gr?nn",
                     "id": "14710"
                 },
                 "customfield_13510": null,
@@ -509,7 +509,7 @@
                     "total": 5400,
                     "percent": 100
                 },
-                "summary": "Leverand�rtest - Testplanlegging",
+                "summary": "Leverandørtest - Testplanlegging",
                 "customfield_10084": null,
                 "customfield_12215": null,
                 "issuetype": {
@@ -534,7 +534,7 @@
                         "32x32": "http://jira.adeo.no/secure/useravatar?size=medium&ownerId=s139901&avatarId=13898",
                         "48x48": "http://jira.adeo.no/secure/useravatar?ownerId=s139901&avatarId=13898"
                     },
-                    "displayName": "Str�mmen, �yvind",
+                    "displayName": "Str?mmen, ?yvind",
                     "active": true
                 },
                 "customfield_13610": null,
@@ -565,7 +565,7 @@
                 },
                 "subtasks": [],
                 "customfield_14010": null,
-                "customfield_13013": "Nei. Dog det kan v�re behov for � sjekke at mappingen til krav�rsakene som ble endret i PK-6722. �vrige eksisterende krav�rsaker og kravtyper blir ivaretatt i denne l�sningen.",
+                "customfield_13013": "Nei. Dog det kan v?re behov for ? sjekke at mappingen til krav?rsakene som ble endret i PK-6722. ?vrige eksisterende krav?rsaker og kravtyper blir ivaretatt i denne l?sningen.",
                 "status": {
                     "self": "http://jira.adeo.no/rest/api/2/status/10010",
                     "description": "Lukket oppgave",
@@ -577,7 +577,7 @@
                 "customfield_14011": null,
                 "customfield_13014": "N/A",
                 "customfield_14311": null,
-                "customfield_13011": "For � teste alle kombinasjoner av kravtype og sakstype kreves brukere som har f�lgende sakstyper:\r\n*AFP\r\n*AFP-Privat\r\n*Alderspensjon\r\n*Barnepensjon\r\n*Familiepleierytelser\r\n*Gammel Yrkesskade\r\n*Gjenlevendeytelser\r\n*Krigspensjon\r\n*Omsorgsopptjening\r\n*Uf�repensjon\r\n\r\nI tillegg trengs brukere som har krav som er \"Til Behandling\" av kravtypen \"Klage\" eller \"Anke\".\r\n\r\nDet er ogs� behov for klokkeskrudd milj� for � verifisere endringene som skal tre i kraft etter systemdato 14.03.2015.\r\n",
+                "customfield_13011": "For ? teste alle kombinasjoner av kravtype og sakstype kreves brukere som har f?lgende sakstyper:\r\n*AFP\r\n*AFP-Privat\r\n*Alderspensjon\r\n*Barnepensjon\r\n*Familiepleierytelser\r\n*Gammel Yrkesskade\r\n*Gjenlevendeytelser\r\n*Krigspensjon\r\n*Omsorgsopptjening\r\n*Uf?repensjon\r\n\r\nI tillegg trengs brukere som har krav som er \"Til Behandling\" av kravtypen \"Klage\" eller \"Anke\".\r\n\r\nDet er ogs? behov for klokkeskrudd milj? for ? verifisere endringene som skal tre i kraft etter systemdato 14.03.2015.\r\n",
                 "customfield_13712": null,
                 "customfield_13012": "http://confluence.adeo.no/display/vitapen/PK-5639 ",
                 "labels": [],
@@ -588,7 +588,7 @@
                     "key": "PKDRAGE-1334",
                     "self": "http://jira.adeo.no/rest/api/2/issue/208474",
                     "fields": {
-                        "summary": "PK-5589: Nye krav�rsaker for klage og ankebehandling",
+                        "summary": "PK-5589: Nye krav?rsaker for klage og ankebehandling",
                         "status": {
                             "self": "http://jira.adeo.no/rest/api/2/status/10027",
                             "description": "Behovet er til systemtest [prosjekt]",
@@ -644,7 +644,7 @@
                     "projectCategory": {
                         "self": "http://jira.adeo.no/rest/api/2/projectCategory/10290",
                         "id": "10290",
-                        "name": "IKT Produktk�"
+                        "name": "IKT Produktk?"
                     }
                 },
                 "customfield_14212": null,
