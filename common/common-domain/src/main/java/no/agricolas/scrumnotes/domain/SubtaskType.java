@@ -6,9 +6,11 @@ import jxl.format.Colour;
  * @author Simen Søhol
  */
 public enum SubtaskType {
-    DEVELOPMENT(Colour.LIGHT_TURQUOISE, "Utvikling "),
-    TESTING(Colour.LIGHT_GREEN, "Test "),
-    OTHER(Colour.LIGHT_ORANGE, "Annet ");
+    DEVELOPMENT(Colour.ICE_BLUE, "Utvikling "),
+    TESTING(Colour.TAN, "Test "),
+    ERROR(Colour.PALETTE_BLACK, "Feilretting "),
+    DOCUMENTATION(Colour.LIGHT_GREEN, "SysDoc "),
+    OTHER(Colour.GRAY_25, "Annet ");
 
     private Colour colour;
 

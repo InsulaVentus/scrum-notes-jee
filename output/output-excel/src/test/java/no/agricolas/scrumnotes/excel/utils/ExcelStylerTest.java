@@ -31,7 +31,7 @@ public class ExcelStylerTest {
     private static final String FONTSTYLE = "Arial";
     private static final String FILENAME = "NoteStyleTest.xls";
     private static final int COLUMN_WIDTH = 90 * 90;
-    private static final int HEADER_HEIGHT = 40 * 20;
+    private static final int HEADER_HEIGHT = 30 * 20;
     private static final int PARENT_HEIGHT = 20 * 20;
     private static final int NOTE_HEIGHT = 90 * 20;
     private static final int ETC_HEIGHT = 20 * 20;
@@ -60,9 +60,9 @@ public class ExcelStylerTest {
     public void setSubtaskColor() throws WriteException {
         Label label = new Label(COLUMN, ROW, HEADERNAME);
 
-        excelStyler.setSubtaskColor(SubtaskType.DEVELOPMENT.getColour(), label);
+        excelStyler.setSubtaskTypeColor(SubtaskType.DEVELOPMENT, label);
 
-        assertThat(label.getCellFormat().getBackgroundColour(), is(Colour.LIGHT_TURQUOISE));
+        assertThat(label.getCellFormat().getBackgroundColour(), is(Colour.ICE_BLUE));
     }
 
     @Test
@@ -95,7 +95,7 @@ public class ExcelStylerTest {
      */
     private void assertLabel(Label... labels) {
         for (Label label : labels) {
-            assertThat(label.getCellFormat().getFont().getPointSize() >= 14, is(true));
+            assertThat(label.getCellFormat().getFont().getPointSize() >= 11, is(true));
             assertThat(label.getCellFormat().getFont().getName(), is(FONTSTYLE));
             assertThat(label.getCellFormat().getAlignment(), is(Alignment.CENTRE));
             assertThat(label.getCellFormat().getWrap(), is(true));

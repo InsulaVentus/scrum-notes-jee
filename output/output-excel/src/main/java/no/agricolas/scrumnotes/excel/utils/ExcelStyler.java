@@ -6,9 +6,14 @@ import jxl.format.Border;
 import jxl.format.BorderLineStyle;
 import jxl.format.Colour;
 import jxl.write.*;
+import jxl.write.Label;
 import jxl.write.biff.RowsExceededException;
+import no.agricolas.scrumnotes.domain.SubtaskType;
 
+import java.awt.*;
 import java.util.List;
+
+import static no.agricolas.scrumnotes.domain.SubtaskType.ERROR;
 
 
 /**
@@ -18,10 +23,14 @@ import java.util.List;
  */
 public class ExcelStyler {
     private static final int COLUMN_WIDTH = 90 * 90;
-    private static final int HEADER_HEIGHT = 40 * 20;
+    private static final int HEADER_HEIGHT = 30 * 20;
     private static final int PARENT_HEIGHT = 20 * 20;
     private static final int NOTE_HEIGHT = 90 * 20;
     private static final int ETC_HEIGHT = 20 * 20;
+    private static final int HEADER_TEXTSIZE = 18;
+    private static final int TYPE_TEXTSIZE = 12;
+    private static final int NOTE_TEXTSIZE = 11;
+    private static final int ETC_TEXTSIZE = 15;
 
     ColorSorter colorSorter;
 
@@ -54,8 +63,27 @@ public class ExcelStyler {
      * @param label        the label to set the color on
      * @throws WriteException
      */
-    public void setSubtaskColor(Colour subtaskColor, Label label) throws WriteException {
+    public void setParentColor(Colour subtaskColor, Label label) throws WriteException {
         changeTypeColor(label, subtaskColor);
+    }
+
+    /**
+     * Sets a color from the  given subtasktype
+     * @param subtaskType the type that contains the color
+     * @param label the label to set the color on
+     * @throws WriteException
+     */
+    public void setSubtaskTypeColor(SubtaskType subtaskType, Label label) throws WriteException {
+        if (subtaskType.equals(ERROR)) {
+            changeTypeColor(label, subtaskType.getColour());
+            WritableCellFormat format = (WritableCellFormat) label.getCellFormat();
+            WritableFont font = new WritableFont(WritableFont.ARIAL, TYPE_TEXTSIZE);
+            font.setColour(Colour.YELLOW);
+            format.setFont(font);
+            label.setCellFormat(format);
+        } else {
+            changeTypeColor(label, subtaskType.getColour());
+        }
     }
 
     /**
@@ -68,7 +96,6 @@ public class ExcelStyler {
     private void changeTypeColor(Label label, Colour color) throws WriteException {
         WritableCellFormat format = (WritableCellFormat) label.getCellFormat();
         format.setBackground(color);
-
         label.setCellFormat(format);
     }
 
@@ -91,22 +118,22 @@ public class ExcelStyler {
      * @param labels the labels to style
      */
     public void setCellstyle(Label... labels) throws WriteException {
-        labels[0].setCellFormat(defaultCellStyleWithBorder(25));
-        labels[1].setCellFormat(defaultCellStyleWithBorder(15));
-        labels[2].setCellFormat(defaultCellStyleWithBorder(14));
-        labels[3].setCellFormat(defaultCellStyleWithBorder(14));
+        labels[0].setCellFormat(defaultCellStyleWithBorder(HEADER_TEXTSIZE));
+        labels[1].setCellFormat(defaultCellStyleWithBorder(TYPE_TEXTSIZE));
+        labels[2].setCellFormat(defaultCellStyleWithBorder(NOTE_TEXTSIZE));
+        labels[3].setCellFormat(defaultCellStyleWithBorder(ETC_TEXTSIZE));
     }
 
     /**
      * Sets a default style on each column
      *
-     * @param textSize the textsize to use
+     * @param textsize the size to use on the text
      * @return the cellstyle
      */
-    private WritableCellFormat defaultCellStyleWithBorder(int textSize) throws WriteException {
+    private WritableCellFormat defaultCellStyleWithBorder(int textsize) throws WriteException {
         WritableCellFormat format = new WritableCellFormat();
         format.setBorder(Border.ALL, BorderLineStyle.THICK);
-        format.setFont(new WritableFont(WritableFont.ARIAL, textSize));
+        format.setFont(new WritableFont(WritableFont.ARIAL, textsize));
         format.setWrap(true);
         format.setAlignment(Alignment.CENTRE);
 
