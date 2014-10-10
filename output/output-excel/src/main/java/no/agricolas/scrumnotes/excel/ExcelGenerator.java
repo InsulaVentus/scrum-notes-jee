@@ -8,7 +8,6 @@ import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 import no.agricolas.scrumnotes.domain.SubtaskNote;
-import no.agricolas.scrumnotes.domain.SubtaskType;
 import no.agricolas.scrumnotes.excel.utils.ExcelStyler;
 import org.apache.commons.lang3.StringUtils;
 
@@ -17,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static jxl.format.Colour.ORANGE;
-import static no.agricolas.scrumnotes.domain.SubtaskType.*;
+import static no.agricolas.scrumnotes.domain.SubtaskType.ERROR;
 
 /**
  * This class will generate a simple excelfile to a given location
@@ -26,7 +25,7 @@ import static no.agricolas.scrumnotes.domain.SubtaskType.*;
  */
 public class ExcelGenerator {
     private static final String FILETYPE = ".xls";
-    private static final String SHEETNAME = "Sheet 1";
+    private static final String SHEETNAME = "Subtasks";
     private static final String QA = StringUtils.rightPad("QA", 25, ' ');
     private static final int A4_HEIGHT = 15;
     private static final int INCREASE_COLUMN = 1;
@@ -57,6 +56,13 @@ public class ExcelGenerator {
         return true;
     }
 
+    /**
+     * Adds the list of subtasks to the excel worksheet
+     *
+     * @param sheet       the worksheet to edit
+     * @param subtaskList adds the subtaskList to the worksheet
+     * @throws WriteException
+     */
     private void generateNotesFromList(WritableSheet sheet, List<SubtaskNote> subtaskList) throws WriteException {
         int column = 0;
         int row = 0;
@@ -79,6 +85,16 @@ public class ExcelGenerator {
         }
     }
 
+    /**
+     * Generates a single subtasknote on the given row and column in the excel writable sheet
+     *
+     * @param sheet       the writable sheet
+     * @param subtask     the subtask element from jira
+     * @param row         the subtasknote starts on the given row
+     * @param column      the subtasknote starts on the given column
+     * @param parentColor a random generated color
+     * @throws WriteException
+     */
     private void generateNote(WritableSheet sheet, SubtaskNote subtask, int row, int column, Colour parentColor) throws WriteException {
         Label header = new Label(column, row, subtask.getHeader());
         Label parent = new Label(column, row + 1, subtask.getSubtaskType().getLabel() + subtask.getParentTask());
