@@ -62,7 +62,7 @@
                         </archive>
 
 
-                        <finalName>Generate_scrumnotes</finalName>
+                        <finalName>../../../Generate_scrumnotes</finalName>
                         <appendAssemblyId>false</appendAssemblyId>
                     </configuration>
 
