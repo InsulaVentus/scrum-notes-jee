@@ -19,12 +19,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>no.agricolas.scrumnotes.common.domain</groupId>
-            <artifactId>common-domain</artifactId>
-            <version>0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
             <groupId>no.agricolas.scrumnotes.input.jira</groupId>
             <artifactId>input-jira</artifactId>
             <version>0.1-SNAPSHOT</version>

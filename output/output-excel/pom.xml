@@ -25,12 +25,6 @@
         </dependency>
 
         <dependency>
-            <groupId>no.agricolas.scrumnotes.common.domain</groupId>
-            <artifactId>common-domain</artifactId>
-            <version>0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.3.2</version>
