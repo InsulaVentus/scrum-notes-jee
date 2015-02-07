@@ -6,11 +6,9 @@ import jxl.format.Border;
 import jxl.format.BorderLineStyle;
 import jxl.format.Colour;
 import jxl.write.*;
-import jxl.write.Label;
 import jxl.write.biff.RowsExceededException;
 import no.agricolas.scrumnotes.domain.SubtaskType;
 
-import java.awt.*;
 import java.util.List;
 
 import static no.agricolas.scrumnotes.domain.SubtaskType.ERROR;
@@ -69,8 +67,9 @@ public class ExcelStyler {
 
     /**
      * Sets a color from the  given subtasktype
+     *
      * @param subtaskType the type that contains the color
-     * @param label the label to set the color on
+     * @param label       the label to set the color on
      * @throws WriteException
      */
     public void setSubtaskTypeColor(SubtaskType subtaskType, Label label) throws WriteException {
@@ -105,7 +104,7 @@ public class ExcelStyler {
      * @return random backgroundcolor
      */
     public Colour getRandomParentColor() {
-        List<Colour> colorList = colorSorter.getListWithoutUnvalidColors();
+        List<Colour> colorList = colorSorter.getListWithoutDarkColors();
 
         int randomColor = (int) (Math.random() * colorList.size());
 

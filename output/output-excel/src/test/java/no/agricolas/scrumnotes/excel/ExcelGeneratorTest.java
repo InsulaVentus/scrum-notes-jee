@@ -25,7 +25,7 @@ public class ExcelGeneratorTest {
 
     @Test
     public void generateSingleNoteFromList() {
-        List<SubtaskNote> subtaskNoteList = new ArrayList<SubtaskNote>();
+        List<SubtaskNote> subtaskNoteList = new ArrayList<>();
 
         for (int i = 1; i < 5; i++) {
             SubtaskNote subtaskNoteUtvikling = buildSubtask(i, SubtaskType.DEVELOPMENT);
@@ -46,10 +46,8 @@ public class ExcelGeneratorTest {
     }
 
     private SubtaskNote buildSubtask(int i, SubtaskType subtaskType) {
-        SubtaskNote subtaskNote = new SubtaskNote("PKKOALA-" + i*1000, "PKKU-" + i + "00",
+        return new SubtaskNote("PKKOALA-" + i * 1000, "PKKU-" + i + "00",
                 "PK-1234" + i + ": This is subtak number " + i, i + ".5",
                 subtaskType);
-
-        return subtaskNote;
     }
 }

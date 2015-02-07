@@ -6,7 +6,6 @@ import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
-import jxl.write.biff.RowsExceededException;
 import no.agricolas.scrumnotes.domain.SubtaskNote;
 import no.agricolas.scrumnotes.excel.utils.ExcelStyler;
 import org.apache.commons.lang3.StringUtils;
@@ -46,11 +45,7 @@ public class ExcelGenerator {
 
             excelWorkbook.write();
             excelWorkbook.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (RowsExceededException e) {
-            e.printStackTrace();
-        } catch (WriteException e) {
+        } catch (IOException | WriteException e) {
             e.printStackTrace();
         }
         return true;

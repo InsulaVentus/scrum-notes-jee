@@ -22,7 +22,7 @@ public class ColorSorterTest {
 
     @Test
     public void getListWithoutUnvalidColors() throws Exception {
-        assertList(colorSorter.getListWithoutUnvalidColors());
+        assertList(colorSorter.getListWithoutDarkColors());
     }
 
     private void assertList(List<Colour> colourList) {

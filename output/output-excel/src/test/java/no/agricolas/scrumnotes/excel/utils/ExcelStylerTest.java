@@ -29,7 +29,7 @@ public class ExcelStylerTest {
     private static final String NOTENAME = "Note";
     private static final String ETCNAME = "5.5";
     private static final String FONTSTYLE = "Arial";
-    private static final String FILENAME = "NoteStyleTest.xls";
+    private static final String FILENAME = "Note.xls";
     private static final int COLUMN_WIDTH = 90 * 90;
     private static final int HEADER_HEIGHT = 30 * 20;
     private static final int PARENT_HEIGHT = 20 * 20;

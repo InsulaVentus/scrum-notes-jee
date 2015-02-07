@@ -12,18 +12,15 @@ import static java.util.Arrays.asList;
  */
 public class ColorSorter {
 
-    public List<Colour> getListWithoutUnvalidColors() {
-        return removeColors(asList(Colour.getAllColours()));
-    }
-
     /**
      * Removes all the dark colors in <code>Colour.getAllColours()</code>
      *
-     * @param colourList the colorlist to filter
      * @return colourlist without dark colors
      */
-    private List<Colour> removeColors(List<Colour> colourList) {
-        List<Colour> lightList = new ArrayList<Colour>();
+    public List<Colour> getListWithoutDarkColors() {
+        List<Colour> colourList = asList(Colour.getAllColours());
+
+        List<Colour> lightList = new ArrayList<>();
         for (Colour colour : colourList) {
             if (!darkColor(colour)) {
                 lightList.add(colour);
