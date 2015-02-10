@@ -5,8 +5,6 @@ import jxl.format.Colour;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Arrays.asList;
-
 /**
  * @author Simen Søhol
  */
@@ -19,7 +17,7 @@ public class ColorSorter {
      */
     public List<Colour> getListWithoutDarkColors() {
         List<Colour> lightList = new ArrayList<>();
-        for (Colour colour : asList(Colour.getAllColours())) {
+        for (Colour colour : Colour.getAllColours()) {
             if (!darkColor(colour)) {
                 lightList.add(colour);
             }
