@@ -18,10 +18,8 @@ public class ColorSorter {
      * @return colourlist without dark colors
      */
     public List<Colour> getListWithoutDarkColors() {
-        List<Colour> colourList = asList(Colour.getAllColours());
-
         List<Colour> lightList = new ArrayList<>();
-        for (Colour colour : colourList) {
+        for (Colour colour : asList(Colour.getAllColours())) {
             if (!darkColor(colour)) {
                 lightList.add(colour);
             }

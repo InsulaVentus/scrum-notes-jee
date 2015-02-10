@@ -38,7 +38,6 @@ public class ExcelStylerTest {
 
     private ExcelStyler excelStyler;
 
-
     @Before
     public void setUp() {
         excelStyler = new ExcelStyler();
